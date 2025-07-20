@@ -112,6 +112,54 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(150, 150, 150, 0.3) transparent;
+}
+
+/* Chrome, Edge, Safari (webkit) */
+.scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.3);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.scroll-area:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.6);
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Chrome, Edge, etc. */
+.scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-area::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.3);
+  border-radius: 4px;
+}
+.scroll-area:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.6);
+}
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
 
 
 @layer base {

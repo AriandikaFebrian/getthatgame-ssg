@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/atoms/Button";
 import { Badge } from "@/components/atoms/Badge";
 import { GenreTag } from "@/components/atoms/GenreTag";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+
 
 interface GameCardProps {
   slug: string;
@@ -73,7 +75,18 @@ export const GameCard: React.FC<GameCardProps> = ({
 
       {/* Main Content */}
      <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
-        <h3 className="text-lg font-semibold">{title}</h3>
+    <Tooltip>
+  <TooltipTrigger asChild>
+    <h3 className="text-lg font-semibold truncate bg-primary/10 px-3 py-1 rounded shadow-sm cursor-help">
+      {title}
+    </h3>
+  </TooltipTrigger>
+  <TooltipContent side="top">
+    <p>{title}</p>
+  </TooltipContent>
+</Tooltip>
+
+
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary">{platform}</Badge>
           <Badge>{rating.toFixed(1)}</Badge>

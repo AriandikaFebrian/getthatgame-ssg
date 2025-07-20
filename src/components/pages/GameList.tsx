@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useMemo } from "react";
-import { Game } from "@/data/games";
+import { games } from "@/data/games";
 import { GameCard } from "@/components/molecules/GameCard";
 import { Button } from "@/components/atoms/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { FloatingGenreSelector } from "@/components/molecules/FloatingGenreSelector";
+import { Game } from "../../../types";
 
 interface GameListProps {
   games: Game[];

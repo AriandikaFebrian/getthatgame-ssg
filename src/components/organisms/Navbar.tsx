@@ -17,7 +17,7 @@ import {
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Genres", href: "/genres" },
-  { name: "About", href: "/about", disabled: true },
+  { name: "About", href: "/about"},
   { name: "Donation", href: "/donation", disabled: true },
   { name: "How To Install?", href: "/howtoinstall" },
 ];
@@ -162,14 +162,19 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </div>
             ) : (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-foreground dark:hover:bg-gray-800"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
+           <Link
+  key={link.name}
+  href={link.href}
+  className={`relative font-medium px-1 transition-all duration-200 ${
+    pathname === link.href
+      ? "text-blue-600 dark:text-blue-400 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600 dark:after:bg-blue-400 after:transition-all"
+      : "text-gray-700 hover:text-blue-600 dark:text-foreground hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-blue-500 dark:hover:after:bg-blue-400 hover:after:transition-all"
+  }`}
+>
+  {link.name}
+</Link>
+
+
             )
           )}
         </div>

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GameApp",
+  title: "GetThatGame.com",
   description: "Browse and discover your favorite games!",
 };
 

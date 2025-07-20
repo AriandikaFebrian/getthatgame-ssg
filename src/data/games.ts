@@ -1,20 +1,4 @@
-export interface Game {
-  slug: string;
-  title: string;
-  coverImage: string;
-  bannerImage: string;
-  platform: string;
-  rating: number;
-  description: string;
-  developer: string;
-  publisher: string;
-  genres: string[];
-  tags: string[];
-  screenshots: string[];
-  systemRequirements?: string;
-  installationNotes?: string;
-  downloadLinks: { label: string; url: string }[];
-}
+import { Game } from "../../types";
 
 export const games: Game[] = [
   {
@@ -36,15 +20,11 @@ export const games: Game[] = [
       "/Images/Cyberpunk/Gameplay3.webp",
     ],
     downloadLinks: [
-      { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Mega", url: "https://mega.nz/fake-link-example" },
   { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
   { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
   { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
-  { label: "Zippyshare", url: "https://www.zippyshare.com/fake-link-example" },
-  { label: "AnonFiles", url: "https://anonfiles.com/fake-link-example" },
   { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
-  { label: "Send.cm", url: "https://send.cm/fake-link-example" },
-  { label: "Torrent (Magnet)", url: "magnet:?xt=urn:btih:examplehash&dn=Cyberpunk2077" },
     ],
      systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
@@ -82,33 +62,73 @@ DLC Included:
 - Season Pass  
   
 Installation time with 16-thread CPU and SSD: ~3 minutes.`,
+      filecryptInfo: {
+    folderPassword: "661",
+    rarPassword: "www.GetThatGame.com",
+    note: "Links are interchangeable",
+    filesize : "70 GB"
+  }
 
 
   },
   {
-    slug: "hades",
-    title: "Hades",
-    coverImage: "/public/vercel.svg",
-    bannerImage: "/public/vercel.svg",
-    platform: "PC, Switch",
-    rating: 4.8,
-    description:
-      "Hades is a rogue-like dungeon crawler from Supergiant Games, featuring fast-paced action and a rich story.",
-    developer: "Supergiant Games",
-    publisher: "Supergiant Games",
-    genres: ["Action", "Rogue-like", "Indie"],
-    tags: ["Mythology", "Fast-Paced", "Replayable"],
+  slug: "robocop-rogue-city-unfinished-business",
+  title: "RoboCop Rogue City: Unfinished Business",
+  coverImage: "/Images/RoboCop Rogue City Unfinished Business/robocop-rogue-city-unfinished-business-pc-cover.jpg",
+  bannerImage: "/Images/RoboCop Rogue City Unfinished Business/robocop-rogue-city-unfinished-business-pc-cover.jpg",
+  platform: "PC",
+  rating: 4.8,
+  description:
+    "RoboCop Rogue City: Unfinished Business adalah game aksi tembak-menembak orang pertama di mana kamu bermain sebagai RoboCop dalam misi menegakkan hukum di kota yang penuh kejahatan. Nikmati alur cerita yang intens dan gameplay brutal dengan kekuatan khas RoboCop.",
+  developer: "Teyon",
+  publisher: "Nacon",
+  genres: ["Action", "Shooter", "Sci-Fi"],
+  tags: ["Cyberpunk", "First-Person Shooter", "Singleplayer"],
     screenshots: [
-      "/public/vercel.svg",
-      "/public/vercel.svg",
-      "/public/vercel.svg",
+      "/Images/RoboCop Rogue City Unfinished Business/robocop-rogue-city-unfinished-business-pc-screenshot-2.jpg",
+      "/Images/RoboCop Rogue City Unfinished Business/robocop-rogue-city-unfinished-business-pc-screenshot-3.jpg",
+      "/Images/RoboCop Rogue City Unfinished Business/robocop-rogue-city-unfinished-business-pc-screenshot-4.jpg",
     ],
-    systemRequirements: "OS: Windows 10, Processor: Intel i5, RAM: 8GB, Graphics: GTX 970",
-    installationNotes: "Download the installer from the official site and follow the on-screen instructions.",
+    systemRequirements: `Minimum:
+• Requires a 64-bit processor and operating system
+• OS: Windows 10
+• Processor: Intel Core i3-12100F or AMD Ryzen 5 1600
+• Memory: 16 GB RAM
+• Graphics: GeForce GTX 1060 6GB or Radeon RX Vega 56 8GB
+• DirectX: Version 12
+• Storage: 40 GB available space
+Recommended:
+• Requires a 64-bit processor and operating system
+• OS: Windows 10
+• Processor: Intel Core i9-9900k or AMD Ryzen 5 5600X
+• Memory: 16 GB RAM
+• Graphics: GeForce RTX 3080 10GB or Radeon RX 6800 XT 16GB
+• DirectX: Version 12
+• Storage: 40 GB available space`,
+    installationNotes: `1. Extract
+2. Burn or mount the .iso
+3. Run setup.exe and install
+4. Enjoy & Play
+Full List of Supported Languages:
+English, French, Italian, German, Spanish, Polish, Russian, Portuguese-Brazil, Korean, Simplified Chinese, Traditional Chinese
+
+Release Notes:
+ElAmigos release, game is already cracked after installation (crack by Codex/Rune or FLT).
+
+DLC: Prime Directives Pack.`,
     downloadLinks: [
-      { label: "Official Site", url: "https://www.supergiantgames.com/games/hades/" },
-      { label: "Steam", url: "https://store.steampowered.com/app/1145360/Hades/" },
+        { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
     ],
+      filecryptInfo: {
+    folderPassword: "661",
+    rarPassword: "www.GetThatGame.com",
+    note: "Links are interchangeable",
+    filesize: "40 GB"
+  }
   },
   {
   slug: "elden-ring",
@@ -143,8 +163,11 @@ Recommended:
 - Storage: 60 GB SSD`,
   installationNotes: "Install via official launcher or Steam. Ensure the latest GPU drivers are installed.",
   downloadLinks: [
-    { label: "Official Site", url: "https://en.bandainamcoent.eu/elden-ring/elden-ring" },
-    { label: "Steam", url: "https://store.steampowered.com/app/1245620/ELDEN_RING/" },
+      { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
   ]
 },
 {
@@ -180,8 +203,11 @@ Recommended:
 - Storage: 1 GB SSD`,
   installationNotes: "Download dari platform resmi seperti Steam atau GOG, lalu install seperti biasa.",
   downloadLinks: [
-    { label: "Official Site", url: "https://www.stardewvalley.net/" },
-    { label: "Steam", url: "https://store.steampowered.com/app/413150/Stardew_Valley/" },
+      { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
   ]
 },
 {
@@ -217,8 +243,11 @@ Recommended:
 - Storage: SSD`,
   installationNotes: "Install launcher dari Minecraft.net dan login menggunakan akun Microsoft atau Mojang.",
   downloadLinks: [
-    { label: "Official Site", url: "https://www.minecraft.net/" },
-    { label: "Microsoft Store", url: "https://www.microsoft.com/store/productId/9NBLGGH2JHXJ" }
+    { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
   ]
 },
 {
@@ -254,8 +283,11 @@ Recommended:
 - Storage: SSD`,
   installationNotes: "Gunakan GOG Galaxy atau Steam untuk instalasi dan update otomatis.",
   downloadLinks: [
-    { label: "GOG", url: "https://www.gog.com/game/witcher_3_wild_hunt" },
-    { label: "Steam", url: "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/" }
+      { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
   ]
 },
 {
@@ -291,8 +323,249 @@ Recommended:
 - Storage: SSD`,
   installationNotes: "Download launcher dari Riot Games, login dengan akun Riot, dan instal Valorant.",
   downloadLinks: [
-    { label: "Official Site", url: "https://playvalorant.com/" }
+      { label: "Mega", url: "https://mega.nz/fake-link-example" },
+  { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+  { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+  { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+  { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
+  ]
+},
+{
+  slug: "ghost-of-tsushima",
+  title: "Ghost of Tsushima",
+  coverImage: "/Images/GhostTsushima/Cover.webp",
+  bannerImage: "/Images/GhostTsushima/Banner.webp",
+  platform: "PS4, PS5",
+  rating: 4.9,
+  description:
+    "Ghost of Tsushima adalah game action-adventure berlatar Jepang feodal yang mengikuti kisah Jin Sakai, seorang samurai yang harus memilih antara kehormatan dan bertahan hidup saat menghadapi invasi Mongol. Dunia terbuka yang menakjubkan dan sistem pertarungan yang elegan menjadikan game ini pengalaman sinematik yang emosional.",
+  developer: "Sucker Punch Productions",
+  publisher: "Sony Interactive Entertainment",
+  genres: ["Action", "Adventure", "Open World"],
+  tags: ["Samurai", "Stealth", "Story Rich"],
+  screenshots: [
+    "/Images/GhostTsushima/Gameplay1.webp",
+    "/Images/GhostTsushima/Gameplay2.webp",
+    "/Images/GhostTsushima/Gameplay3.webp"
+  ],
+  systemRequirements: `Note: Game ini eksklusif untuk PlayStation, tidak tersedia resmi untuk PC.
+Namun versi porting tidak resmi dapat ditemukan dengan emulator seperti RPCS3 atau versi remaster PS5.`,
+  installationNotes: "Gunakan PS Store untuk membeli dan instalasi. Untuk versi PC tidak resmi, gunakan RPCS3 dan file ISO legal.",
+  downloadLinks: [
+    { label: "Mega", url: "https://mega.nz/fake-link-example" },
+    { label: "Google Drive", url: "https://drive.google.com/fake-link-example" },
+    { label: "MediaFire", url: "https://www.mediafire.com/fake-link-example" },
+    { label: "1Fichier", url: "https://1fichier.com/fake-link-example" },
+    { label: "Pixeldrain", url: "https://pixeldrain.com/u/fake-link-example" },
+  ],
+  filecryptInfo: {
+    folderPassword: "661",
+    rarPassword: "www.GetThatGame.com",
+    note: "Links are interchangeable",
+    filesize: "45 GB"
+  }
+},
+{
+  slug: "assassins-creed-valhalla",
+  title: "Assassin's Creed Valhalla",
+  coverImage: "/Images/Valhalla/Cover.webp",
+  bannerImage: "/Images/Valhalla/Banner.webp",
+  platform: "PC, PS5, Xbox Series X",
+  rating: 4.3,
+  description: "Mainkan sebagai Eivor, seorang pejuang Viking legendaris dalam pencarian kejayaan di tanah Inggris kuno. Assassin’s Creed Valhalla menggabungkan pertarungan brutal, eksplorasi dunia terbuka, dan pembangunan permukiman dalam cerita epik khas Ubisoft.",
+  developer: "Ubisoft Montreal",
+  publisher: "Ubisoft",
+  genres: ["Action", "RPG", "Open World"],
+  tags: ["Viking", "Historical", "Exploration"],
+  screenshots: ["/Images/Valhalla/1.webp", "/Images/Valhalla/2.webp", "/Images/Valhalla/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 10
+- Processor: Ryzen 3 1200 / i5-4460
+- Memory: 8 GB
+- Graphics: GTX 960 / R9 380
+- Storage: 50 GB`,
+  installationNotes: "Gunakan Ubisoft Connect untuk instalasi dan aktivasi game.",
+  downloadLinks: [
+    { label: "Mega", url: "https://mega.nz/valhalla" },
+    { label: "Google Drive", url: "https://drive.google.com/valhalla" }
+  ]
+},
+{
+  slug: "hades",
+  title: "Hades",
+  coverImage: "/Images/Hades/Cover.webp",
+  bannerImage: "/Images/Hades/Banner.webp",
+  platform: "PC, Switch",
+  rating: 4.9,
+  description: "Game roguelike aksi cepat dari Supergiant Games, Hades mengikuti perjalanan Zagreus, putra Hades, yang mencoba melarikan diri dari dunia bawah dengan bantuan para dewa Olympus.",
+  developer: "Supergiant Games",
+  publisher: "Supergiant Games",
+  genres: ["Action", "Roguelike"],
+  tags: ["Indie", "Greek Mythology", "Challenging"],
+  screenshots: ["/Images/Hades/1.webp", "/Images/Hades/2.webp", "/Images/Hades/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 7
+- Processor: Dual Core 2.4GHz
+- Memory: 4 GB
+- Graphics: 1GB VRAM / DirectX 10+
+- Storage: 15 GB`,
+  installationNotes: "Install via Steam atau Epic Games Launcher.",
+  downloadLinks: [
+    { label: "MediaFire", url: "https://mediafire.com/hades" },
+    { label: "1Fichier", url: "https://1fichier.com/hades" }
+  ]
+},
+{
+  slug: "gta-v",
+  title: "Grand Theft Auto V",
+  coverImage: "/Images/GTAV/Cover.webp",
+  bannerImage: "/Images/GTAV/Banner.webp",
+  platform: "PC, PS5, Xbox Series X",
+  rating: 4.8,
+  description: "GTA V menghadirkan petualangan 3 karakter utama dalam dunia terbuka penuh aksi dan kebebasan. Nikmati Los Santos yang luas, cerita sinematik, dan mode online yang adiktif.",
+  developer: "Rockstar Games",
+  publisher: "Rockstar Games",
+  genres: ["Action", "Open World", "Crime"],
+  tags: ["Sandbox", "Multiplayer", "Driving"],
+  screenshots: ["/Images/GTAV/1.webp", "/Images/GTAV/2.webp", "/Images/GTAV/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 10
+- Processor: i5-3470 / FX-8350
+- Memory: 8 GB
+- Graphics: GTX 660 / HD 7870
+- Storage: 72 GB`,
+  installationNotes: "Gunakan Rockstar Launcher atau Epic untuk instalasi.",
+  downloadLinks: [
+    { label: "Mega", url: "https://mega.nz/gtav" },
+    { label: "Pixeldrain", url: "https://pixeldrain.com/u/gtav" }
+  ]
+},
+{
+  slug: "hollow-knight",
+  title: "Hollow Knight",
+  coverImage: "/Images/HollowKnight/Cover.webp",
+  bannerImage: "/Images/HollowKnight/Banner.webp",
+  platform: "PC, Switch, PS4, Xbox One",
+  rating: 4.9,
+  description: "Hollow Knight adalah game metroidvania 2D yang menggabungkan eksplorasi mendalam, pertempuran halus, dan dunia bawah tanah misterius bernama Hallownest.",
+  developer: "Team Cherry",
+  publisher: "Team Cherry",
+  genres: ["Action", "Adventure", "Platformer"],
+  tags: ["Indie", "Challenging", "Atmospheric"],
+  screenshots: ["/Images/HollowKnight/1.webp", "/Images/HollowKnight/2.webp", "/Images/HollowKnight/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 7
+- Processor: Intel Core 2 Duo
+- Memory: 4 GB RAM
+- Graphics: GeForce 9800GTX+
+- Storage: 9 GB`,
+  installationNotes: "Tersedia melalui Steam dan GOG.",
+  downloadLinks: [
+    { label: "Google Drive", url: "https://drive.google.com/hollow" },
+    { label: "Mega", url: "https://mega.nz/hollow" }
+  ]
+},
+{
+  slug: "red-dead-redemption-2",
+  title: "Red Dead Redemption 2",
+  coverImage: "/Images/RDR2/Cover.webp",
+  bannerImage: "/Images/RDR2/Banner.webp",
+  platform: "PC, PS5, Xbox Series X",
+  rating: 4.9,
+  description: "Game petualangan dunia terbuka dari Rockstar Games yang membawa pemain ke era Wild West lewat kisah Arthur Morgan. Dunia yang detail, cerita emosional, dan gameplay realistis menjadikan RDR2 salah satu masterpiece terbaik.",
+  developer: "Rockstar Games",
+  publisher: "Rockstar Games",
+  genres: ["Action", "Adventure", "Open World"],
+  tags: ["Western", "Story Rich", "Immersive Sim"],
+  screenshots: ["/Images/RDR2/1.webp", "/Images/RDR2/2.webp", "/Images/RDR2/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 7
+- Processor: i5-2500K / FX-6300
+- Memory: 8 GB
+- Graphics: GTX 770 / R9 280
+- Storage: 150 GB`,
+  installationNotes: "Gunakan Rockstar Launcher atau Epic Games Store.",
+  downloadLinks: [
+    { label: "Mega", url: "https://mega.nz/rdr2" },
+    { label: "1Fichier", url: "https://1fichier.com/rdr2" }
+  ]
+},
+{
+  slug: "celeste",
+  title: "Celeste",
+  coverImage: "/Images/Celeste/Cover.webp",
+  bannerImage: "/Images/Celeste/Banner.webp",
+  platform: "PC, Switch, PS4, Xbox One",
+  rating: 4.7,
+  description: "Celeste adalah game platformer menantang tentang perjalanan Madeline mendaki gunung Celeste. Penuh pesan emosional dan kontrol presisi tinggi, Celeste adalah perpaduan sempurna antara gameplay dan cerita.",
+  developer: "Maddy Makes Games",
+  publisher: "Matt Makes Games",
+  genres: ["Platformer", "Indie"],
+  tags: ["Difficult", "Narrative", "Pixel Art"],
+  screenshots: ["/Images/Celeste/1.webp", "/Images/Celeste/2.webp", "/Images/Celeste/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 7
+- Processor: Core i3
+- Memory: 2 GB RAM
+- Graphics: Intel HD 4000
+- Storage: 1.2 GB`,
+  installationNotes: "Tersedia di Steam dan Itch.io.",
+  downloadLinks: [
+    { label: "Pixeldrain", url: "https://pixeldrain.com/u/celeste" },
+    { label: "MediaFire", url: "https://mediafire.com/celeste" }
+  ]
+},
+{
+  slug: "resident-evil-4-remake",
+  title: "Resident Evil 4 Remake",
+  coverImage: "/Images/RE4Remake/Cover.webp",
+  bannerImage: "/Images/RE4Remake/Banner.webp",
+  platform: "PC, PS5, Xbox Series X",
+  rating: 4.6,
+  description: "Remake modern dari game survival horror legendaris. Ikuti Leon S. Kennedy menyelamatkan putri presiden dalam perjalanan penuh horor, misteri, dan aksi di desa terpencil yang menyeramkan.",
+  developer: "Capcom",
+  publisher: "Capcom",
+  genres: ["Horror", "Action", "Shooter"],
+  tags: ["Survival Horror", "Remake", "Third Person"],
+  screenshots: ["/Images/RE4Remake/1.webp", "/Images/RE4Remake/2.webp", "/Images/RE4Remake/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows 10
+- Processor: Ryzen 3 1200 / i5-7500
+- Memory: 8 GB
+- Graphics: GTX 1050 Ti
+- Storage: 60 GB`,
+  installationNotes: "Install via Capcom launcher atau Steam.",
+  downloadLinks: [
+    { label: "Google Drive", url: "https://drive.google.com/re4remake" },
+    { label: "Mega", url: "https://mega.nz/re4remake" }
+  ]
+},
+{
+  slug: "terraria",
+  title: "Terraria",
+  coverImage: "/Images/Terraria/Cover.webp",
+  bannerImage: "/Images/Terraria/Banner.webp",
+  platform: "PC, PS4, Xbox, Mobile",
+  rating: 4.8,
+  description: "Terraria adalah game sandbox 2D dengan elemen eksplorasi, crafting, dan pertarungan bos. Seperti Minecraft dalam versi horizontal, kamu bebas membangun, menggali, dan bertahan hidup di dunia yang terus berkembang.",
+  developer: "Re-Logic",
+  publisher: "Re-Logic",
+  genres: ["Adventure", "Survival", "Sandbox"],
+  tags: ["Crafting", "Pixel Art", "Multiplayer"],
+  screenshots: ["/Images/Terraria/1.webp", "/Images/Terraria/2.webp", "/Images/Terraria/3.webp"],
+  systemRequirements: `Minimum:
+- OS: Windows XP
+- Processor: 2.0 GHz
+- Memory: 2.5 GB RAM
+- Graphics: 128MB Video Memory
+- Storage: 200 MB`,
+  installationNotes: "Install melalui Steam, GOG, atau mobile store.",
+  downloadLinks: [
+    { label: "Pixeldrain", url: "https://pixeldrain.com/u/terraria" },
+    { label: "MediaFire", url: "https://mediafire.com/terraria" }
   ]
 }
+
+
 
 ];

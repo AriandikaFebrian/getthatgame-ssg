@@ -1,12 +1,39 @@
-import { Metadata } from "next";
+"use client";
+
+import { useEffect, useState } from "react";
 import { games } from "@/data/games";
 import { GameList } from "@/components/pages/GameList";
-
-export const metadata: Metadata = {
-  title: "Game List - Next.js Game App",
-  description: "Browse a list of exciting games with ratings and platforms.",
-};
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/atoms/Button";
 
 export default function Home() {
-  return <GameList games={games} />;
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    const seen = localStorage.getItem("hasSeenIntroModal");
+    if (!seen) {
+      setShowIntro(true);
+      localStorage.setItem("hasSeenIntroModal", "true");
+    }
+  }, []);
+
+  return (
+    <>
+      <GameList games={games} />
+
+      <Dialog open={showIntro} onOpenChange={setShowIntro}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Hi Gamer! 🎮</DialogTitle>
+            <DialogDescription>
+              This website helps you discover and install legal game downloads. If you don&apos;t have the budget for original games, this is a helpful and safe alternative. Please support developers when you can!
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-end mt-4">
+            <Button onClick={() => setShowIntro(false)}>Got it!</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }

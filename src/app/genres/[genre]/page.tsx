@@ -1,25 +1,13 @@
-'use client';
-
-import { useParams } from 'next/navigation';
 import { games } from '@/data/games';
-import { GameList } from '@/components/pages/GameList';
+import GenrePageClient from './GenrePageClient';
 
-export default function GenrePage() {
-  const params = useParams();
-  const genreParam = params.genre;
+interface GenrePageProps {
+  params: { genre: string };
+}
 
-  // Handle genreParam possibly being undefined or string[]
-  let genre = "";
-  if (typeof genreParam === "string") {
-    genre = genreParam.charAt(0).toUpperCase() + genreParam.slice(1);
-  }
-
-  // Filter games by genre
+export default function GenrePage({ params }: GenrePageProps) {
+  const genre = params.genre.charAt(0).toUpperCase() + params.genre.slice(1);
   const filteredGames = games.filter((game) => game.genres.includes(genre));
 
-  return (
-    <main className="container mx-auto px-4 py-8">
-      <GameList games={filteredGames} />
-    </main>
-  );
+  return <GenrePageClient genre={genre} games={filteredGames} />;
 }

@@ -36,85 +36,81 @@ export const GameCard: React.FC<GameCardProps> = ({
     setLoading(true);
     setTimeout(() => {
       router.push(`/game/${slug}`);
-    }, 2000); // simulate delay
+    }, 2000);
   };
 
-  // Frame animasi gambar (250ms per frame)
   useEffect(() => {
     if (!loading) return;
-
     const frameInterval = setInterval(() => {
-      setLoadingFrame((prev) => (prev % 8) + 1); // loop 1 -> 8
+      setLoadingFrame((prev) => (prev % 8) + 1);
     }, 250);
-
     return () => clearInterval(frameInterval);
   }, [loading]);
 
-  // Animasi titik "Loading."
   useEffect(() => {
     if (!loading) return;
-
     const dotInterval = setInterval(() => {
       setDots((prev) => (prev.length === 3 ? "." : prev + "."));
     }, 500);
-
     return () => clearInterval(dotInterval);
   }, [loading]);
 
   return (
-    <div className="flex flex-col justify-between border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 h-full">
-      <div>
-        <div className="relative w-full aspect-[4/3]">
-          <Image
-            src={coverImage}
-            alt={`${title} cover`}
-            fill
-            className="object-cover rounded-t"
-            sizes="(max-width: 768px) 100vw, 33vw"
-            priority={false}
-          />
-        </div>
-        <div className="p-4 space-y-2">
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">{platform}</Badge>
-            <Badge>{rating.toFixed(1)}</Badge>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {genres.map((genre) => (
-              <GenreTag
-                key={genre}
-                genre={genre}
-                isSelected={selectedGenre === genre}
-                onClick={onGenreClick}
-              />
-            ))}
-          </div>
-        </div>
+    <div className="flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background">
+      {/* Cover Image */}
+      <div className="relative w-full aspect-[4/3]">
+        <Image
+          src={coverImage}
+          alt={`${title} cover`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
       </div>
-      <div className="px-4 pb-4">
-        <Button
-          variant="link"
-          size="sm"
-          onClick={handleViewDetails}
-          disabled={loading}
-          className="cursor-pointer transition-transform duration-200 hover:scale-105 flex items-center gap-2"
-        >
-          {loading ? (
-            <>
-              <Image
-                src={`/images/logo/sketsa${loadingFrame}.png`}
-                alt={`Loading frame ${loadingFrame}`}
-                width={20}
-                height={20}
-                className="rounded"
-              />
-              <span className="font-medium text-sm">Loading{dots}</span>
-            </>
-          ) : (
-            "View Details"
-          )}
-        </Button>
+
+      {/* Main Content */}
+      <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="secondary">{platform}</Badge>
+          <Badge>{rating.toFixed(1)}</Badge>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {genres.map((genre) => (
+            <GenreTag
+              key={genre}
+              genre={genre}
+              isSelected={selectedGenre === genre}
+              onClick={onGenreClick}
+            />
+          ))}
+        </div>
+
+        {/* View Details Button */}
+        <div className="mt-auto pt-3">
+          <Button
+            variant="link"
+            size="sm"
+            onClick={handleViewDetails}
+            disabled={loading}
+            className="cursor-pointer transition-transform duration-200 hover:scale-105 flex items-center gap-2"
+          >
+            {loading ? (
+              <>
+                <Image
+                  src={`/images/logo/sketsa${loadingFrame}.png`}
+                  alt={`Loading frame ${loadingFrame}`}
+                  width={20}
+                  height={20}
+                  className="rounded"
+                />
+                <span className="font-medium text-sm">Loading{dots}</span>
+              </>
+            ) : (
+              "View Details"
+            )}
+          </Button>
+        </div>
       </div>
     </div>
   );

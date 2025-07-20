@@ -1,9 +1,8 @@
-"use client";
+// app/about/page.tsx — ✅ Server Component
 
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const AboutPage: React.FC = () => {
+export default function AboutPage() {
   return (
     <main className="container mx-auto max-w-2xl px-4 py-10">
       <h1 className="text-4xl font-bold text-center mb-8">About GameApp</h1>
@@ -49,6 +48,4 @@ const AboutPage: React.FC = () => {
       </section>
     </main>
   );
-};
-
-export default AboutPage;
+}

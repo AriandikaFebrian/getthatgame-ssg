@@ -73,46 +73,7 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center relative">
-          {/* Genres Dropdown */}
-          <div className="relative" ref={genreRef}>
-            <button
-              onClick={() => setGenreOpen(!genreOpen)}
-              className="text-gray-700 hover:text-blue-600 font-medium hover:underline dark:text-foreground"
-              type="button"
-            >
-              Genres
-            </button>
 
-            {genreOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[500px] bg-white dark:bg-card shadow-xl border rounded-lg z-50 px-5 py-4">
-                <ul className="grid grid-cols-4 gap-x-6 gap-y-3">
-                  {genres.map((genre) => {
-                    const genreSlug = genre.toLowerCase();
-                    const isActive = pathname === `/genres/${genreSlug}`;
-                    return (
-                      <li key={genre}>
-                        <Link
-                          href={`/genres/${genreSlug}`}
-                          onClick={() => setGenreOpen(false)}
-                          className={`flex items-center gap-2 text-sm px-3 py-2 rounded-md transition-all w-full
-                            ${isActive
-                              ? "text-blue-600 bg-blue-100 font-semibold underline underline-offset-4 dark:text-blue-400 dark:bg-blue-900"
-                              : "text-gray-700 hover:bg-gray-100 hover:text-blue-600 dark:text-muted-foreground dark:hover:bg-gray-800 dark:hover:text-blue-400"
-                            }`}
-                        >
-                          <span
-                            className={`w-2 h-2 rounded-full shrink-0 mt-0.5
-                              ${isActive ? "bg-blue-600 dark:bg-blue-400" : "bg-gray-400 dark:bg-muted-foreground"}`}
-                          />
-                          <span className="flex-1">{genre}</span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            )}
-          </div>
 
           {/* Other nav links */}
           {navLinks

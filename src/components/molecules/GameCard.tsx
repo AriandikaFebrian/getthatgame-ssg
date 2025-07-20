@@ -58,18 +58,21 @@ export const GameCard: React.FC<GameCardProps> = ({
   return (
     <div className="flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background">
       {/* Cover Image */}
-      <div className="relative w-full aspect-[4/3]">
-        <Image
-          src={coverImage}
-          alt={`${title} cover`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-      </div>
+      <div className="w-full h-[180px] relative overflow-hidden rounded-t-lg">
+  <Image
+    src={coverImage}
+    alt={`${title} cover`}
+    fill
+    sizes="(max-width: 768px) 100vw, 33vw"
+    className="object-cover"
+    priority
+  />
+</div>
+
+
 
       {/* Main Content */}
-      <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
+     <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
         <h3 className="text-lg font-semibold">{title}</h3>
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary">{platform}</Badge>
@@ -98,7 +101,7 @@ export const GameCard: React.FC<GameCardProps> = ({
             {loading ? (
               <>
                 <Image
-                  src={`/images/logo/sketsa${loadingFrame}.png`}
+                  src={`/images/logo/Sketsa${loadingFrame}.png`}
                   alt={`Loading frame ${loadingFrame}`}
                   width={20}
                   height={20}

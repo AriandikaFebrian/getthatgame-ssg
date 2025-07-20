@@ -43,7 +43,7 @@ export default function GenrePageClient({ genre, games }: GenrePageClientProps) 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-12 text-gray-600 dark:text-gray-400">
           <Image
-            src={`/images/logo/sketsa${loadingFrame}.png`}
+            src={`/images/logo/Sketsa${loadingFrame}.png`}
             alt={`Loading frame ${loadingFrame}`}
             width={60}
             height={60}

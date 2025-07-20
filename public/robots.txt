@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml
+# Host
+Host: https://getthatgame.vercel.app
+
+# Sitemaps
+Sitemap: https://getthatgame.vercel.app/sitemap.xml

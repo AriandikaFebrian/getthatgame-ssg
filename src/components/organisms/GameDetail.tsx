@@ -1,3 +1,4 @@
+// ...imports
 'use client';
 
 import Head from "next/head";
@@ -28,8 +29,6 @@ export const GameDetail = ({ game }: { game: Game }) => {
     .slice(-3)
     .reverse();
 
-  const roundedRating = Math.round(game.rating);
-
   return (
     <>
       <Head>
@@ -58,18 +57,17 @@ export const GameDetail = ({ game }: { game: Game }) => {
                   Rating: {game.rating.toFixed(1)} / 5
                 </h2>
                 <div className="flex gap-1">
-  {[1, 2, 3, 4, 5].map((star) => (
-    <span
-      key={star}
-      className={`text-2xl ${
-        Math.floor(game.rating) >= star ? "text-yellow-400" : "text-gray-300"
-      }`}
-    >
-      ★
-    </span>
-  ))}
-</div>
-
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className={`text-2xl ${
+                        Math.floor(game.rating) >= star ? "text-yellow-400" : "text-gray-300"
+                      }`}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -176,49 +174,73 @@ export const GameDetail = ({ game }: { game: Game }) => {
               <h3 className="text-lg font-medium mb-4">Download</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  {game.downloadLinks.map((link) => (
-                    <Button
-                      key={link.label}
-                      asChild
-                      variant="ghost"
-                      size="lg"
-                      className="w-full justify-between text-black dark:text-white shadow"
-                    >
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between w-full"
-                      >
-                        {link.label}
-                        {game.filecryptInfo && (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <span>
-                                  <Info className="w-4 h-4 text-yellow-500 ml-2" />
-                                </span>
-                              </TooltipTrigger>
-                              <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
-                                <p className="flex items-center gap-2">
-                                  <Folder className="w-4 h-4 text-yellow-500" />
-                                  <span><code>{game.filecryptInfo.folderPassword}</code></span>
-                                </p>
-                                <p className="flex items-center gap-2">
-                                  <FileArchive className="w-4 h-4 text-yellow-500" />
-                                  <span><code>{game.filecryptInfo.rarPassword}</code></span>
-                                </p>
-                                <p className="flex items-center gap-2">
-                                  <HardDriveDownload className="w-4 h-4 text-yellow-500" />
-                                  <span><code>{game.filecryptInfo.filesize}</code></span>
-                                </p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        )}
-                      </a>
-                    </Button>
-                  ))}
+                  {game.downloadLinks && game.downloadLinks.length > 0 ? (
+                    game.downloadLinks.map((link) => {
+                      const isLinkAvailable = !!link.url;
+                      return (
+                        <Button
+                          key={link.label}
+                          asChild={isLinkAvailable}
+                          variant="ghost"
+                          size="lg"
+                          className="w-full justify-between text-black dark:text-white shadow cursor-default"
+                        >
+                          {isLinkAvailable ? (
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-between w-full"
+                            >
+                              {link.label}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span>
+                                      <Info className="w-4 h-4 text-green-500 ml-2" />
+                                    </span>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
+                                    <p className="flex items-center gap-2">
+                                      <Folder className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.folderPassword}</code></span>
+                                    </p>
+                                    <p className="flex items-center gap-2">
+                                      <FileArchive className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.rarPassword}</code></span>
+                                    </p>
+                                    <p className="flex items-center gap-2">
+                                      <HardDriveDownload className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.filesize}</code></span>
+                                    </p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </a>
+                          ) : (
+                            <div className="flex items-center justify-between w-full text-muted-foreground">
+                              {link.label}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span>
+                                      <Info className="w-4 h-4 text-red-500 ml-2" />
+                                    </span>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
+                                    <p className="text-red-500 font-medium">Link not available right now</p>
+                                    <p className="text-xs text-muted-foreground">Still under construction</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          )}
+                        </Button>
+                      );
+                    })
+                  ) : (
+                    <div className="text-sm text-muted-foreground italic">Download link not available.</div>
+                  )}
                 </div>
 
                 {game.filecryptInfo && (

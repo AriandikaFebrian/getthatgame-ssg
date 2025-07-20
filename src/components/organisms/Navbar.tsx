@@ -7,12 +7,19 @@ import { usePathname } from "next/navigation";
 import { SearchBar } from "../molecules/SearchBar";
 import { Button } from "../ui/button";
 import { Sun, Moon } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Genres", href: "/genres" },
-  { name: "About", href: "/about" },
-  { name: "Donation", href: "/donation" },
+  { name: "About", href: "/about", disabled: true },
+  { name: "Donation", href: "/donation", disabled: true },
+  { name: "How To Install?", href: "/howtoinstall" },
 ];
 
 const genres = [
@@ -73,27 +80,37 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center relative">
-
-
-          {/* Other nav links */}
           {navLinks
             .filter((link) => link.name !== "Genres")
-            .map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 hover:text-blue-600 font-medium dark:text-foreground"
-              >
-                {link.name}
-              </Link>
-            ))}
+            .map((link) =>
+              link.disabled ? (
+                <TooltipProvider key={link.name}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="text-gray-400 cursor-not-allowed font-medium">
+                        {link.name}
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-white text-red-600 border border-red-500 text-xs dark:bg-zinc-900 dark:text-red-500 dark:border-red-500 rounded-md px-3 py-1 shadow">
+                      Still under construction
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-700 hover:text-blue-600 font-medium dark:text-foreground"
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
 
-          {/* Search Bar */}
           <div className="ml-4">
             <SearchBar />
           </div>
 
-          {/* Dark Mode Toggle Button */}
           <Button variant="outline" size="sm" onClick={toggleDarkMode} className="ml-4">
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </Button>
@@ -136,16 +153,25 @@ export const Navbar: React.FC = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-background border-t border-b shadow-sm">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-foreground dark:hover:bg-gray-800"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.disabled ? (
+              <div
+                key={link.name}
+                className="block px-4 py-2 text-gray-400 cursor-not-allowed dark:text-gray-500"
+              >
+                {link.name}
+              </div>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-foreground dark:hover:bg-gray-800"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>

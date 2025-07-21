@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function AboutPage() {
   return (
     <main className="container mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-4xl font-bold text-center mb-8">About GameApp</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">About GetThatGane</h1>
 
       <Card>
         <CardHeader>
@@ -14,12 +14,12 @@ export default function AboutPage() {
 
         <CardContent className="space-y-4 text-base text-gray-700">
           <p>
-            GameApp is your ultimate destination for discovering and exploring a wide variety of games across multiple genres. 
+            GetThatGane is your ultimate destination for discovering and exploring a wide variety of games across multiple genres. 
             Our mission is to provide gamers with a clean, user-friendly platform to find games they love, explore genres, and stay updated with the latest releases.
           </p>
 
           <p>
-            Whether you&apos;re a casual player or a hardcore enthusiast, GameApp offers curated game lists, detailed information, and a seamless browsing experience — all in one place.
+            Whether you&apos;re a casual player or a hardcore enthusiast, GetThatGane offers curated game lists, detailed information, and a seamless browsing experience — all in one place.
           </p>
 
           <p>

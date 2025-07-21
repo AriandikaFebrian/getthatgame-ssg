@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default function DonationPage() {
   return (
     <main className="container mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-4xl font-bold text-center mb-8">Support GameApp</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Support GetThatGane</h1>
 
       <Card className="mb-6">
         <CardHeader>
@@ -14,7 +14,7 @@ export default function DonationPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-gray-700 text-base">
           <p>
-            GameApp is a passion project built to help gamers explore and discover games across genres and platforms.
+            GetThatGane is a passion project built to help gamers explore and discover games across genres and platforms.
             We aim to provide a clean, user-friendly platform with curated collections and seamless browsing.
           </p>
           <p>
@@ -30,7 +30,7 @@ export default function DonationPage() {
         <CardContent className="space-y-4">
           <div className="text-gray-800 space-y-2">
             <p>
-              💳 <strong>Bank Transfer:</strong> 1234567890 (BCA - a.n. GameApp)
+              💳 <strong>Bank Transfer:</strong> 1234567890 (BCA - a.n. GetThatGane)
             </p>
             <p>
               📱 <strong>DANA:</strong> 0812-3456-7890
@@ -38,12 +38,12 @@ export default function DonationPage() {
             <p>
               ☕ <strong>Buy Me a Coffee:</strong>{" "}
               <a
-                href="https://buymeacoffee.com/gameapp"
+                href="https://buymeacoffee.com/GetThatGane"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
               >
-                buymeacoffee.com/gameapp
+                buymeacoffee.com/GetThatGane
               </a>
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function DonationPage() {
 
           <div className="text-center">
             <Button asChild variant="outline">
-              <a href="https://buymeacoffee.com/gameapp" target="_blank" rel="noopener noreferrer">
+              <a href="https://buymeacoffee.com/GetThatGane" target="_blank" rel="noopener noreferrer">
                 Donate Now
               </a>
             </Button>
@@ -61,7 +61,7 @@ export default function DonationPage() {
       </Card>
 
       <p className="text-sm text-center text-muted-foreground mt-8">
-        Every donation helps keep GameApp alive. Thank you for your support!
+        Every donation helps keep GetThatGane alive. Thank you for your support!
       </p>
     </main>
   );

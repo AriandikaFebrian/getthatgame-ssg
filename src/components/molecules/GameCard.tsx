@@ -7,7 +7,6 @@ import { Badge } from "@/components/atoms/Badge";
 import { GenreTag } from "@/components/atoms/GenreTag";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-
 interface GameCardProps {
   slug: string;
   title: string;
@@ -31,7 +30,6 @@ export const GameCard: React.FC<GameCardProps> = ({
 }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [loadingFrame, setLoadingFrame] = useState(1);
   const [dots, setDots] = useState(".");
 
   const handleViewDetails = () => {
@@ -43,14 +41,6 @@ export const GameCard: React.FC<GameCardProps> = ({
 
   useEffect(() => {
     if (!loading) return;
-    const frameInterval = setInterval(() => {
-      setLoadingFrame((prev) => (prev % 8) + 1);
-    }, 250);
-    return () => clearInterval(frameInterval);
-  }, [loading]);
-
-  useEffect(() => {
-    if (!loading) return;
     const dotInterval = setInterval(() => {
       setDots((prev) => (prev.length === 3 ? "." : prev + "."));
     }, 500);
@@ -59,34 +49,30 @@ export const GameCard: React.FC<GameCardProps> = ({
 
   return (
     <div className="flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background">
-      {/* Cover Image */}
+      {/* Cover Image with Overlay Title */}
       <div className="w-full h-[180px] relative overflow-hidden rounded-t-lg">
-  <Image
-    src={coverImage}
-    alt={`${title} cover`}
-    fill
-    sizes="(max-width: 768px) 100vw, 33vw"
-    className="object-cover"
-    priority
-  />
-</div>
-
-
+        <Image
+          src={coverImage}
+          alt={`${title} cover`}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover"
+          priority
+        />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="absolute bottom-0 left-0 w-full bg-black/60 px-3 py-2 text-white text-sm font-semibold truncate cursor-help">
+              {title}
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="top">
+            <p>{title}</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
 
       {/* Main Content */}
-     <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
-    <Tooltip>
-  <TooltipTrigger asChild>
-    <h3 className="text-lg font-semibold truncate bg-primary/10 px-3 py-1 rounded shadow-sm cursor-help">
-      {title}
-    </h3>
-  </TooltipTrigger>
-  <TooltipContent side="top">
-    <p>{title}</p>
-  </TooltipContent>
-</Tooltip>
-
-
+      <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary">{platform}</Badge>
           <Badge>{rating.toFixed(1)}</Badge>
@@ -113,13 +99,7 @@ export const GameCard: React.FC<GameCardProps> = ({
           >
             {loading ? (
               <>
-                <Image
-                  src={`/images/logo/Sketsa${loadingFrame}.png`}
-                  alt={`Loading frame ${loadingFrame}`}
-                  width={20}
-                  height={20}
-                  className="rounded"
-                />
+                <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
                 <span className="font-medium text-sm">Loading{dots}</span>
               </>
             ) : (

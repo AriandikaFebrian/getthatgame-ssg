@@ -25,9 +25,10 @@ export default function Home() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Hi Gamer! 🎮</DialogTitle>
-            <DialogDescription>
-              This website helps you discover and install Ileggal game downloads. If you don&apos;t have the budget for original games, this is a helpful and safe alternative. Please support developers when you can!
-            </DialogDescription>
+          <DialogDescription>
+  This website helps you discover popular and trending games available online. If you're currently unable to afford paid versions, this platform can be a helpful alternative. We always recommend supporting the developers whenever possible!
+</DialogDescription>
+
           </DialogHeader>
           <div className="flex justify-end mt-4">
             <Button onClick={() => setShowIntro(false)}>Got it!</Button>

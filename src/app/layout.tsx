@@ -32,19 +32,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col`}>
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground transition-all duration-700 ease-in-out`}>
+
         <Navbar />
 
         <main className="scroll-area px-4 sm:px-6 md:px-8">
           {children}
-        </main>
-
-        <footer className="text-center text-sm text-muted-foreground py-6 border-t border-border">
+                  <footer className="text-center text-sm text-muted-foreground py-6 border-t border-border">
           <p>
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-primary">GetThatGame</span>. Built with 💻 and a love for gaming. All rights reserved.
+            <span className="font-semibold text-primary">GetThatGame</span> All rights reserved.
           </p>
         </footer>
+        </main>
 
         {/* 🚧 DEVELOPMENT ONLY: Under Construction Toast - remove before production */}
         <Toaster richColors />

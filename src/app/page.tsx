@@ -26,7 +26,7 @@ export default function Home() {
           <DialogHeader>
             <DialogTitle>Hi Gamer! 🎮</DialogTitle>
           <DialogDescription>
-  This website helps you discover popular and trending games available online. If you're currently unable to afford paid versions, this platform can be a helpful alternative. We always recommend supporting the developers whenever possible!
+  This website helps you discover popular and trending games available online. If you&apos;re currently unable to afford paid versions, this platform can be a helpful alternative. We always recommend supporting the developers whenever possible!
 </DialogDescription>
 
           </DialogHeader>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Metadata untuk SEO dan Google preview
 export const metadata: Metadata = {
-  title: "GetThatGame.com",
-  description: "Browse and discover your favorite games!",
+  title: "GetThatGame",
+  description: "Browse and discover your favorite games. Great for gamers on a budget!",
+  icons: {
+    icon: "/favicon.ico", // favicon di public/
+  },
 };
 
 export default function RootLayout({
@@ -26,16 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Favicon */}
-        <Head>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col`}>
         <Navbar />
 
-        {/* Scrollable main area */}
         <main className="scroll-area px-4 sm:px-6 md:px-8">
           {children}
         </main>

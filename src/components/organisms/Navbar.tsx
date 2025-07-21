@@ -30,6 +30,8 @@ export const Navbar: React.FC = () => {
     return false;
   });
 
+  
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -233,3 +235,5 @@ export const Navbar: React.FC = () => {
     </nav>
   );
 };
+
+export default Navbar;

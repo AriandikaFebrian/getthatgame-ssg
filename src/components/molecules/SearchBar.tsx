@@ -1,40 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react"; // Spinner icon
+import { useRouter, usePathname } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 export const SearchBar = () => {
-  const [query, setQuery] = useState(""); // Current search query
-  const [previousQuery, setPreviousQuery] = useState(""); // Previous search query to prevent repeat searches
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
-  // This hook runs once on component mount to check for any query params
-  useEffect(() => {
-    const initialQuery = searchParams.get("q");
-    if (initialQuery) {
-      setQuery(initialQuery); // Set initial query from URL if present
-      setPreviousQuery(initialQuery); // Set the previous query to match the initial query
-    }
-  }, [searchParams]);
-
-  // Reset isLoading when URL or query parameter changes
-  useEffect(() => {
-    setIsLoading(false); // Reset loading state when page URL changes
-  }, [searchParams]);
-
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!query.trim() || query.trim() === previousQuery) {
-      return; // Prevent search if query is empty or the same as previous query
-    }
+    if (!query.trim()) return;
 
-    setIsLoading(true); // Start loading
-    router.push(`/search?q=${encodeURIComponent(query.trim())}`); // Navigate to search page
-    setPreviousQuery(query.trim()); // Update the previous query to the current one after search
+    setIsLoading(true);
+    router.push(`/search?q=${encodeURIComponent(query.trim())}`);
   };
+
+  // Reset isLoading ketika route berubah
+  useEffect(() => {
+    setIsLoading(false);
+  }, [pathname]);
 
   return (
     <form

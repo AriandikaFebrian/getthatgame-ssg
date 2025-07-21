@@ -1,4 +1,4 @@
-// app/donate/page.tsx — ✅ ini adalah Server Component
+// app/donation/page.tsx — ✅ ini adalah Server Component
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";

@@ -50,26 +50,27 @@ export const GameCard: React.FC<GameCardProps> = ({
   return (
     <div className="flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background">
       {/* Cover Image with Overlay Title */}
-      <div className="w-full h-[180px] relative overflow-hidden rounded-t-lg">
-        <Image
-          src={coverImage}
-          alt={`${title} cover`}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover"
-          priority
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <div className="absolute bottom-0 left-0 w-full bg-black/60 px-3 py-2 text-white text-sm font-semibold truncate cursor-help">
-              {title}
-            </div>
-          </TooltipTrigger>
-          <TooltipContent side="top">
-            <p>{title}</p>
-          </TooltipContent>
-        </Tooltip>
+   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+  <Image
+    src={coverImage}
+    alt={`${title} cover`}
+    fill
+    className="object-cover"
+    priority
+  />
+
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <div className="absolute bottom-0 left-0 w-full bg-black/60 px-3 py-2 text-white text-sm font-semibold truncate cursor-help">
+        {title}
       </div>
+    </TooltipTrigger>
+    <TooltipContent side="top">
+      <p>{title}</p>
+    </TooltipContent>
+  </Tooltip>
+</div>
+
 
       {/* Main Content */}
       <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">

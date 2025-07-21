@@ -1,4 +1,3 @@
-// ...imports
 'use client';
 
 import Head from "next/head";
@@ -9,25 +8,14 @@ import { Button } from "@/components/atoms/Button";
 import { games } from "@/data/games";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Info, Folder, FileArchive, HardDriveDownload } from "lucide-react";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useMediaQuery } from "@/lib/use-media-query"; // Importing the media query hook
 import { Game } from "../../../types";
 
 export const GameDetail = ({ game }: { game: Game }) => {
-  const latestGames = [...games]
-    .filter((g) => g.slug !== game.slug)
-    .slice(-3)
-    .reverse();
+  const latestGames = [...games].filter((g) => g.slug !== game.slug).slice(-3).reverse();
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Checking if it's a mobile screen
 
   return (
     <>
@@ -154,30 +142,142 @@ export const GameDetail = ({ game }: { game: Game }) => {
           </div>
         </section>
 
-        {/* Tabs */}
+        {/* Tabs (or Accordion for Mobile) */}
         <section>
-          <Tabs defaultValue="description" className="w-full">
-<div className="relative w-full">
-  <TabsList className="flex overflow-x-auto no-scrollbar w-full gap-2 pr-6">
-    <TabsTrigger value="description" className="flex-shrink-0">Description</TabsTrigger>
-    <TabsTrigger value="download" className="flex-shrink-0">Download</TabsTrigger>
-    <TabsTrigger value="requirements" className="flex-shrink-0">Requirements</TabsTrigger>
-    <TabsTrigger value="installation" className="flex-shrink-0">Installation</TabsTrigger>
-  </TabsList>
+          {isMobile ? (
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-medium">Description</h3>
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.description || "No description provided."}
+                </p>
+              </div>
+<hr className="border-t border-zinc-200 dark:border-zinc-700 my-4" />
 
-  {/* Gradient fade di sisi kanan */}
-  <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-white dark:from-background" />
-</div>
+              <div>
+                <h3 className="text-lg font-medium">Download</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {game.downloadLinks?.length ? (
+                    game.downloadLinks.map((link) => {
+                      const isLinkAvailable = !!link.url;
+                      return (
+                        <Button
+                          key={link.label}
+                          asChild={isLinkAvailable}
+                          variant="ghost"
+                          size="lg"
+                          className="w-full justify-between text-black dark:text-white shadow cursor-default"
+                        >
+                          {isLinkAvailable ? (
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-between w-full"
+                            >
+                              {link.label}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span>
+                                      <Info className="w-4 h-4 text-green-500 ml-2" />
+                                    </span>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
+                                    <p className="flex items-center gap-2">
+                                      <Folder className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.folderPassword}</code></span>
+                                    </p>
+                                    <p className="flex items-center gap-2">
+                                      <FileArchive className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.rarPassword}</code></span>
+                                    </p>
+                                    <p className="flex items-center gap-2">
+                                      <HardDriveDownload className="w-4 h-4 text-yellow-500" />
+                                      <span><code>{game.filecryptInfo?.filesize}</code></span>
+                                    </p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </a>
+                          ) : (
+                            <div className="flex items-center justify-between w-full text-muted-foreground">
+                              {link.label}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span>
+                                      <Info className="w-4 h-4 text-red-500 ml-2" />
+                                    </span>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
+                                    <p className="text-red-500 font-medium">Link not available right now</p>
+                                    <p className="text-xs text-muted-foreground">Still under construction</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          )}
+                        </Button>
+                      );
+                    })
+                  ) : (
+                    <div className="text-sm text-muted-foreground italic">Download link not available.</div>
+                  )}
+                  
+                </div>
+              </div>
+              <hr className="border-t border-zinc-200 dark:border-zinc-700 my-4" />
+              <div>
+                <h3 className="text-lg font-medium">Requirements</h3>
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.systemRequirements || "No system requirements provided."}
+                </p>
+              </div>
+              <hr className="border-t border-zinc-200 dark:border-zinc-700 my-4" />
+              <div>
+                <h3 className="text-lg font-medium">Installation</h3>
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.installationNotes || "No installation notes provided."}
+                </p>
+              </div>
+              {game.filecryptInfo && (
+                  <div className="rounded-md bg-zinc-100 dark:bg-zinc-900 border border-yellow-300 dark:border-yellow-500 p-4 text-sm text-zinc-800 dark:text-zinc-100">
+                    <p className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">INFO</p>
+                    <p className="mb-1">{game.filecryptInfo.note}</p>
+                    <p className="flex items-center gap-2">
+                      <Folder className="w-4 h-4 text-yellow-500" />
+                      <span>Folder Password: <code>{game.filecryptInfo.folderPassword}</code></span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <FileArchive className="w-4 h-4 text-yellow-500" />
+                      <span>RAR Password: <code>{game.filecryptInfo.rarPassword}</code></span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <HardDriveDownload className="w-4 h-4 text-yellow-500" />
+                      <span>Filesize: <code>{game.filecryptInfo.filesize}</code></span>
+                    </p>
+                  </div>
+                )}
+            </div>
+          ) : (
+            <Tabs defaultValue="description" className="w-full">
+              <div className="relative w-full">
+                <TabsList className="flex overflow-x-auto no-scrollbar w-full gap-2 pr-6">
+                  <TabsTrigger value="description">Description</TabsTrigger>
+                  <TabsTrigger value="download">Download</TabsTrigger>
+                  <TabsTrigger value="requirements">Requirements</TabsTrigger>
+                  <TabsTrigger value="installation">Installation</TabsTrigger>
+                </TabsList>
+              </div>
 
+              <TabsContent value="description">
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.description || "No description provided."}
+                </p>
+              </TabsContent>
 
-  <TabsContent value="description">
-    <p className="text-sm text-muted-foreground whitespace-pre-line">
-      {game.description || "No description provided."}
-    </p>
-  </TabsContent>
-
-  <TabsContent value="download">
-    <h3 className="text-lg font-medium mb-4">Download</h3>
+              <TabsContent value="download">
     <div className="grid md:grid-cols-2 gap-6">
       <div className="space-y-3">
         {game.downloadLinks && game.downloadLinks.length > 0 ? (
@@ -248,57 +348,77 @@ export const GameDetail = ({ game }: { game: Game }) => {
           <div className="text-sm text-muted-foreground italic">Download link not available.</div>
         )}
       </div>
+
+      {game.filecryptInfo && (
+                  <div className="rounded-md bg-zinc-100 dark:bg-zinc-900 border border-yellow-300 dark:border-yellow-500 p-4 text-sm text-zinc-800 dark:text-zinc-100">
+                    <p className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">INFO</p>
+                    <p className="mb-1">{game.filecryptInfo.note}</p>
+                    <p className="flex items-center gap-2">
+                      <Folder className="w-4 h-4 text-yellow-500" />
+                      <span>Folder Password: <code>{game.filecryptInfo.folderPassword}</code></span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <FileArchive className="w-4 h-4 text-yellow-500" />
+                      <span>RAR Password: <code>{game.filecryptInfo.rarPassword}</code></span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <HardDriveDownload className="w-4 h-4 text-yellow-500" />
+                      <span>Filesize: <code>{game.filecryptInfo.filesize}</code></span>
+                    </p>
+                  </div>
+                )}
+                
     </div>
   </TabsContent>
 
-  <TabsContent value="requirements">
-    <p className="text-sm text-muted-foreground whitespace-pre-line">
-      {game.systemRequirements || "No system requirements provided."}
-    </p>
-  </TabsContent>
+              <TabsContent value="requirements">
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.systemRequirements || "No system requirements provided."}
+                </p>
+              </TabsContent>
 
-  <TabsContent value="installation">
-    <p className="text-sm text-muted-foreground whitespace-pre-line">
-      {game.installationNotes || "No installation notes provided."}
-    </p>
-  </TabsContent>
-</Tabs>
+              <TabsContent value="installation">
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {game.installationNotes || "No installation notes provided."}
+                </p>
+              </TabsContent>
+            </Tabs>
+          )}
+        </section>
 
-
-          {/* Related Games */}
-          <section>
-            <h2 className="text-2xl font-semibold mt-10 mb-4">You Might Also Like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {games
-                .filter((g) => g.slug !== game.slug)
-                .filter(
-                  (g) =>
-                    g.genres.some((genre) => game.genres.includes(genre)) ||
-                    g.tags.some((tag) => game.tags.includes(tag))
-                )
-                .slice(0, 4)
-                .map((related) => (
-                  <Link
-                    key={related.slug}
-                    href={`/game/${related.slug}`}
-                    className="block border rounded-lg overflow-hidden hover:shadow transition"
-                  >
-                    <div className="relative w-full h-40 sm:h-48">
-                      <Image
-                        src={related.coverImage}
-                        alt={`${related.title} cover`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-3">
-                      <h3 className="font-semibold">{related.title}</h3>
-                      <p className="text-sm text-muted-foreground">{related.platform}</p>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </section>
+        {/* Related Games */}
+        <section>
+          <h2 className="text-2xl font-semibold mt-10 mb-4">You Might Also Like</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {games
+              .filter((g) => g.slug !== game.slug)
+              .filter(
+                (g) =>
+                  g.genres.some((genre) => game.genres.includes(genre)) ||
+                  g.tags.some((tag) => game.tags.includes(tag))
+              )
+              .slice(0, 4)
+              .map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/game/${related.slug}`}
+                  className="block border rounded-lg overflow-hidden hover:shadow transition"
+                >
+                  <div className="relative w-full h-40 sm:h-48">
+                    <Image
+                      src={related.coverImage}
+                      alt={`${related.title} cover`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-semibold">{related.title}</h3>
+                    <p className="text-sm text-muted-foreground">{related.platform}</p>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </section>
       </main>
     </>

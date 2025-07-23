@@ -33,6 +33,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   const [dots, setDots] = useState(".");
 
   const handleViewDetails = () => {
+    if (loading) return;
     setLoading(true);
     setTimeout(() => {
       router.push(`/game/${slug}`);
@@ -48,29 +49,33 @@ export const GameCard: React.FC<GameCardProps> = ({
   }, [loading]);
 
   return (
-    <div className="flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background">
+    <div
+      onClick={handleViewDetails}
+      className={`flex flex-col border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-background cursor-pointer ${
+        loading ? "opacity-60 pointer-events-none" : ""
+      }`}
+    >
       {/* Cover Image with Overlay Title */}
-   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
-  <Image
-    src={coverImage}
-    alt={`${title} cover`}
-    fill
-    className="object-cover"
-    priority
-  />
+      <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+        <Image
+          src={coverImage}
+          alt={`${title} cover`}
+          fill
+          className="object-cover"
+          priority
+        />
 
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <div className="absolute bottom-0 left-0 w-full bg-black/60 px-3 py-2 text-white text-sm font-semibold truncate cursor-help">
-        {title}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="absolute bottom-0 left-0 w-full bg-black/60 px-3 py-2 text-white text-sm font-semibold truncate cursor-help">
+              {title}
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="top">
+            <p>{title}</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
-    </TooltipTrigger>
-    <TooltipContent side="top">
-      <p>{title}</p>
-    </TooltipContent>
-  </Tooltip>
-</div>
-
 
       {/* Main Content */}
       <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
@@ -78,36 +83,29 @@ export const GameCard: React.FC<GameCardProps> = ({
           <Badge variant="secondary">{platform}</Badge>
           <Badge>{rating.toFixed(1)}</Badge>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {genres.map((genre) => (
-            <GenreTag
-              key={genre}
-              genre={genre}
-              isSelected={selectedGenre === genre}
-              onClick={onGenreClick}
-            />
-          ))}
-        </div>
+        {genres.map((genre) => (
+  <div
+    key={genre}
+    onClick={(e: React.MouseEvent) => {
+      e.stopPropagation();
+      onGenreClick?.(genre);
+    }}
+  >
+    <GenreTag
+      genre={genre}
+      isSelected={selectedGenre === genre}
+    />
+  </div>
+))}
 
-        {/* View Details Button */}
-        <div className="mt-auto pt-3">
-          <Button
-            variant="link"
-            size="sm"
-            onClick={handleViewDetails}
-            disabled={loading}
-            className="cursor-pointer transition-transform duration-200 hover:scale-105 flex items-center gap-2"
-          >
-            {loading ? (
-              <>
-                <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
-                <span className="font-medium text-sm">Loading{dots}</span>
-              </>
-            ) : (
-              "View Details"
-            )}
-          </Button>
-        </div>
+
+        {/* Optional: show loading indicator */}
+        {loading && (
+          <div className="flex items-center gap-2 pt-2">
+            <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
+            <span className="font-medium text-sm">Loading{dots}</span>
+          </div>
+        )}
       </div>
     </div>
   );

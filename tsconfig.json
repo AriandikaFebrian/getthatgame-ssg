@@ -32,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    "send-test.js"
+    "send-test.js",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

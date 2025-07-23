@@ -14,7 +14,7 @@ import { useMediaQuery } from "@/lib/use-media-query"; // Importing the media qu
 import { Game } from "../../../types";
 
 export const GameDetail = ({ game }: { game: Game }) => {
-  const latestGames = [...games].filter((g) => g.slug !== game.slug).slice(-3).reverse();
+  const latestGames = [...games].filter((g) => g.slug !== game.slug).slice(-4).reverse();
   const isMobile = useMediaQuery("(max-width: 768px)"); // Checking if it's a mobile screen
 
   return (
@@ -71,7 +71,7 @@ export const GameDetail = ({ game }: { game: Game }) => {
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:w-72 space-y-4">
+          <aside className="lg:w-100 space-y-4">
             <h2 className="text-xl font-semibold">New & Trending</h2>
             <div className="space-y-4">
               {latestGames.map((latest) => (
@@ -92,9 +92,17 @@ export const GameDetail = ({ game }: { game: Game }) => {
                     <h3 className="font-medium text-sm line-clamp-2">
                       {latest.title}
                     </h3>
-                    <span className="text-xs text-muted-foreground">
-                      {latest.platform}
-                    </span>
+                   <div className="flex flex-wrap gap-1 mt-1">
+  {latest.genres.slice(0, 3).map((genre) => (
+    <span
+      key={genre}
+      className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
+    >
+      {genre}
+    </span>
+  ))}
+</div>
+
                   </div>
                 </Link>
               ))}
@@ -414,7 +422,6 @@ export const GameDetail = ({ game }: { game: Game }) => {
                   </div>
                   <div className="p-3">
                     <h3 className="font-semibold">{related.title}</h3>
-                    <p className="text-sm text-muted-foreground">{related.platform}</p>
                   </div>
                 </Link>
               ))}

@@ -86,7 +86,7 @@ This heartwarming title offers relaxing gameplay, seasonal variety, and plenty o
     "/Images/SOS-FoMT/screenshot3.jpg"
   ],
   downloadLinks: [
-    { label: "Mega", url: "" },
+    { label: "Mega", url: "https://mega.nz/file/VQ4XDAyb#qAXLIGqheOYyOByzyb2mFr485hdefHN_MlLY2xHwthE" },
     { label: "Google Drive", url: "https://drive.google.com/file/d/1GNrG3noNG3qbwuzCm5ao-bFZjfKRIp8_/view?usp=sharing" },
     { label: "MediaFire", url: "" },
     { label: "1Fichier", url: "" },
@@ -450,7 +450,7 @@ Experience the rise of Carl “CJ” Johnson as he returns to Los Santos to save
   genres: ["Action", "Adventure", "Open World"],
   tags: ["Remastered", "Third-Person", "Story Rich", "Classic", "Urban Crime"],
   screenshots: [
-    "/Images/GTA-SA-DE/screenshot1.jpg",
+    "/Images/GTA-SA-DE/screenshot1.jpeg",
     "/Images/GTA-SA-DE/screenshot2.jpg",
     "/Images/GTA-SA-DE/screenshot3.jpg"
   ],

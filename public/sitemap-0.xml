@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://getthatgame.vercel.app/about</loc><lastmod>2025-07-21T10:36:00.786Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/donation</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/big-ambitions</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/gta-iii-definitive-edition</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/gta-san-andreas-definitive-edition</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/gta-vice-city-definitive-edition</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/schedule-i</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/story-of-seasons-friends-of-mineral-town</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/the-sims-1-legacy-collection</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/the-sims-2-legacy-collection</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/the-sims-2-ultimate-collection</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/game/the-sims-3-ultimate-collection</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app/howtoinstall</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://getthatgame.vercel.app</loc><lastmod>2025-07-21T10:36:00.787Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/donation</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/search</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/about</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/howtoinstall</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/big-ambitions</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/gta-iii-definitive-edition</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/gta-san-andreas-definitive-edition</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/gta-vice-city-definitive-edition</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/schedule-i</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/story-of-seasons-friends-of-mineral-town</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/the-sims-1-legacy-collection</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/the-sims-2-legacy-collection</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/the-sims-2-ultimate-collection</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/game/the-sims-3-ultimate-collection</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://getthatgame.vercel.app/reports</loc><lastmod>2025-07-23T09:42:17.606Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

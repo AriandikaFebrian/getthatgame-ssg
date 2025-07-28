@@ -59,10 +59,7 @@ export default function RootLayout({
 
 
         </main>
-
-        {/* 🚧 DEVELOPMENT ONLY: Under Construction Toast - remove before production */}
         <Toaster richColors />
-        <UnderConstructionToast />
       </body>
     </html>
   );

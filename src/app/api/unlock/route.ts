@@ -11,13 +11,13 @@ export async function GET(req: NextRequest) {
   }
 
   const data = tokens[token];
-
   if (!data) {
     return new NextResponse('Token not found', { status: 404 });
   }
 
   const { slug, host } = data;
-  const redirectUrl = `/game/${slug}/unlocked/${host}`; // internal URL
 
+  // ABSOLUTE URL (bukan relative)
+  const redirectUrl = `${req.nextUrl.origin}/game/${slug}/unlocked/${host}`;
   return NextResponse.redirect(redirectUrl, 302);
 }

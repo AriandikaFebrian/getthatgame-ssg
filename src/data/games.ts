@@ -1203,5 +1203,4 @@ No setup required`,
 
 
 ];
-module.exports = { games };
 

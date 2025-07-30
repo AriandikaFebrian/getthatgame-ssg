@@ -134,7 +134,7 @@ No additional setup needed`,
   }
 },
 {
-  slug: "story-of-seasons-friends-of-mineral-town",
+  slug: "s-o-s-f-o-m-t",
   title: "STORY OF SEASONS: Friends of Mineral Town",
   coverImage: "/Images/SOS-FoMT/cover.png",
   bannerImage: "/Images/SOS-FoMT/cover.png",
@@ -1202,11 +1202,6 @@ No setup required`,
 }
 
 
-
-
-
-
-
-
-
 ];
+module.exports = { games };
+

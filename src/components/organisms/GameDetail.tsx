@@ -12,6 +12,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useMediaQuery } from "@/lib/use-media-query";
 import { Game } from "../../../types";
+import { getToken } from '@/lib/token-utils';
+
 
 export const GameDetail = ({ game }: { game: Game }) => {
   const latestGames = [...games].filter((g) => g.slug !== game.slug).slice(-4).reverse();
@@ -289,7 +291,8 @@ export const GameDetail = ({ game }: { game: Game }) => {
       {game.downloadLinks && game.downloadLinks.length > 0 ? (
         game.downloadLinks.map((link) => {
           const isAvailable = link.files && link.files.length > 0;
-
+  const host = link.host.toLowerCase();
+            const token = getToken(game.slug, host); 
           return (
            <Button
   key={link.label}
@@ -299,12 +302,13 @@ export const GameDetail = ({ game }: { game: Game }) => {
   className="w-full justify-between text-black dark:text-white shadow cursor-default"
 >
   {isAvailable ? (
-        <a
-      href={`https://shrinkme.io/unlock-${game.slug}-${link.host.toLowerCase()}`} // ← ALIAS ShrinkMe
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-between w-full"
-    >
+       <a
+  href={`https://shrinkme.io/unlock-${game.slug}-${link.host.toLowerCase()}`} // ← pakai alias ShrinkMe
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center justify-between w-full"
+>
+
 
                     {link.label}
                     <TooltipProvider>

@@ -19,22 +19,31 @@ interface Props {
 export default function VerifyPage({ params }: Props) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
+  const [loading, setLoading] = useState(true); // For managing the loading state
 
   // Step 1: Cek apakah user punya izin
   useEffect(() => {
     const key = `verify_${params.slug}_${params.host}`;
     const isAllowed = sessionStorage.getItem(key);
 
-    // If the key exists, set the user as authorized
-    if (isAllowed === "true") {
-      setAuthorized(true);
-      // Optionally, you could remove it here if it's for one-time use
-      // sessionStorage.removeItem(key); // If you only want to allow access once
-    } else {
-      // Redirect if not authorized
+    // Redirect if the session is not set or is invalid
+    if (isAllowed !== "true") {
       router.replace("/"); // Redirect back if the session isn't set or isn't valid
+    } else {
+      setAuthorized(true);
     }
+
+    setLoading(false); // Stop loading once session is checked
   }, [params.slug, params.host, router]);
+
+  // Show loading state until the session check is done
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-muted-foreground text-sm">Memeriksa izin...</p>
+      </div>
+    );
+  }
 
   const game = games.find((g) => g.slug === params.slug);
   if (!game || !authorized) return null;
@@ -42,14 +51,6 @@ export default function VerifyPage({ params }: Props) {
   const downloadLink = game.downloadLinks.find(
     (link) => link.label.toLowerCase().replace(/\s+/g, "-") === params.host
   );
-
-  if (!authorized) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-muted-foreground text-sm">Mengalihkan...</p>
-      </div>
-    );
-  }
 
   if (!downloadLink || downloadLink.files.length === 0) {
     return (

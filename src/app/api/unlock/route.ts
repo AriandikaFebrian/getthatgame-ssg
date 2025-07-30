@@ -1,4 +1,3 @@
-// app/api/unlock/route.ts
 import { tokens } from '@/lib/tokens';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -17,7 +16,7 @@ export async function GET(req: NextRequest) {
 
   const { slug, host } = data;
 
-  // ABSOLUTE URL (bukan relative)
-  const redirectUrl = `${req.nextUrl.origin}/game/${slug}/unlocked/${host}`;
+  // Ganti ke domain SSG (build statis)
+  const redirectUrl = `https://getthatgame-ssg.vercel.app/game/${slug}/unlocked/${host}`;
   return NextResponse.redirect(redirectUrl, 302);
 }

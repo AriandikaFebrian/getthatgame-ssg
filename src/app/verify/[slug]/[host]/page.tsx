@@ -9,34 +9,53 @@ import { Card } from "@/components/ui/card";
 import { games } from "@/data/games";
 import { notFound } from "next/navigation";
 
+// Tambahkan tipe parameter yang lebih baik
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
     host: string;
-  };
+  }>;
 }
 
 export default function VerifyPage({ params }: Props) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
-  const [loading, setLoading] = useState(true); // For managing the loading state
+  const [loading, setLoading] = useState(true);
+  const [unwrappedParams, setUnwrappedParams] = useState<{ slug: string; host: string } | null>(null);
 
-  // Step 1: Cek apakah user punya izin
   useEffect(() => {
-    const key = `verify_${params.slug}_${params.host}`;
-    const isAllowed = sessionStorage.getItem(key);
+    // Unwrap `params` dengan `React.use()` agar bisa diakses dengan aman
+    const unwrapParams = async () => {
+      try {
+        const unwrapped = await params;
+        setUnwrappedParams(unwrapped);
+      } catch (error) {
+        console.error("Error while unwrapping params:", error);
+      }
+    };
 
-    // Redirect if the session is not set or is invalid
-    if (isAllowed !== "true") {
-      router.replace("/"); // Redirect back if the session isn't set or isn't valid
-    } else {
-      setAuthorized(true);
+    unwrapParams();
+  }, [params]);
+
+  useEffect(() => {
+    // Jika params sudah di-unwrapped dan ada, lanjutkan pengecekan sessionStorage
+    if (unwrappedParams) {
+      const { slug, host } = unwrappedParams;
+      const key = `verify_${slug}_${host}`;
+      const isAllowed = sessionStorage.getItem(key);
+
+      if (isAllowed === "true") {
+        setAuthorized(true);
+        sessionStorage.removeItem(key); // once-only use
+      } else {
+        router.replace("/"); // redirect if not allowed
+      }
+
+      setLoading(false); // Stop loading once params are checked
     }
+  }, [unwrappedParams, router]);
 
-    setLoading(false); // Stop loading once session is checked
-  }, [params.slug, params.host, router]);
-
-  // Show loading state until the session check is done
+  // If params or session is loading, show a loading state
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -45,11 +64,14 @@ export default function VerifyPage({ params }: Props) {
     );
   }
 
-  const game = games.find((g) => g.slug === params.slug);
+  if (!unwrappedParams) return null; // Ensure that unwrappedParams is available
+
+  const { slug, host } = unwrappedParams;
+  const game = games.find((g) => g.slug === slug);
   if (!game || !authorized) return null;
 
   const downloadLink = game.downloadLinks.find(
-    (link) => link.label.toLowerCase().replace(/\s+/g, "-") === params.host
+    (link) => link.label.toLowerCase().replace(/\s+/g, "-") === host
   );
 
   if (!downloadLink || downloadLink.files.length === 0) {

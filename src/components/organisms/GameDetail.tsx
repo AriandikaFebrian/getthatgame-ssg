@@ -308,7 +308,7 @@ export const GameDetail = ({ game }: { game: Game }) => {
                 </p>
               </TabsContent>
 
-     <TabsContent value="download">
+   <TabsContent value="download">
   <div className="grid md:grid-cols-2 gap-6">
     <div className="space-y-3">
       {game.downloadLinks && game.downloadLinks.length > 0 ? (
@@ -320,82 +320,75 @@ export const GameDetail = ({ game }: { game: Game }) => {
           const href = `/verify/${slug}/${host}`;
 
           return (
-           <Button
-  key={link.label}
-  onClick={() => {
-    const isAvailable = link.files && link.files.length > 0;
-    if (!isAvailable) return;
+            <Button
+              key={link.label}
+              onClick={() => {
+                if (!isAvailable) return;
 
-    // 🔑 Generate shortlink key dan href
-    const normalizeHost = (host: string) => host.toLowerCase().replace(/\s+/g, "-");
-    const getShortLinkKey = (slug: string, host: string) =>
-      `${slug.toLowerCase()}_${normalizeHost(host)}`;
+                // Simpan ke sessionStorage terlebih dahulu
+                sessionStorage.setItem(key, "true");
 
-    const key = getShortLinkKey(game.slug, link.host);
-    const href = shortLinks[key] ?? `/verify/${game.slug}/${normalizeHost(link.host)}`;
-    
-    // Set sessionStorage to allow access
-    sessionStorage.setItem(key, "true");
-
-    // Redirect to short link or actual verification page
-    router.push(href);
-  }}
-  variant="ghost"
-  size="lg"
-  className="w-full justify-between text-black dark:text-white shadow cursor-pointer"
-  disabled={!isAvailable}
->
-  <div className="flex items-center justify-between w-full">
-    {link.label}
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span>
-            <Info
-              className={`w-4 h-4 ml-2 ${
-                isAvailable ? "text-green-500" : "text-red-500"
-              }`}
-            />
-          </span>
-        </TooltipTrigger>
-        <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
-          {isAvailable ? (
-            <>
-              <p className="flex items-center gap-2">
-                <Folder className="w-4 h-4 text-yellow-500" />
-                <span>
-                  <code>{game.filecryptInfo?.folderPassword}</code>
-                </span>
-              </p>
-              <p className="flex items-center gap-2">
-                <FileArchive className="w-4 h-4 text-yellow-500" />
-                <span>
-                  <code>{game.filecryptInfo?.rarPassword}</code>
-                </span>
-              </p>
-              <p className="flex items-center gap-2">
-                <HardDriveDownload className="w-4 h-4 text-yellow-500" />
-                <span>
-                  <code>{game.filecryptInfo?.filesize}</code>
-                </span>
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="text-red-500 font-medium">
-                Link not available right now
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Still under construction
-              </p>
-            </>
-          )}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  </div>
-</Button>
-
+                // Tambahkan sedikit delay sebelum melakukan redirect
+                setTimeout(() => {
+  sessionStorage.setItem(key, "true");
+  router.push(href); // Lakukan redirect setelah sesi disimpan
+}, 500); // Delay 500ms untuk memastikan sessionStorage ter-set
+              }}
+              variant="ghost"
+              size="lg"
+              className="w-full justify-between text-black dark:text-white shadow cursor-pointer"
+              disabled={!isAvailable}
+            >
+              <div className="flex items-center justify-between w-full">
+                {link.label}
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span>
+                        <Info
+                          className={`w-4 h-4 ml-2 ${
+                            isAvailable ? "text-green-500" : "text-red-500"
+                          }`}
+                        />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
+                      {isAvailable ? (
+                        <>
+                          <p className="flex items-center gap-2">
+                            <Folder className="w-4 h-4 text-yellow-500" />
+                            <span>
+                              <code>{game.filecryptInfo?.folderPassword}</code>
+                            </span>
+                          </p>
+                          <p className="flex items-center gap-2">
+                            <FileArchive className="w-4 h-4 text-yellow-500" />
+                            <span>
+                              <code>{game.filecryptInfo?.rarPassword}</code>
+                            </span>
+                          </p>
+                          <p className="flex items-center gap-2">
+                            <HardDriveDownload className="w-4 h-4 text-yellow-500" />
+                            <span>
+                              <code>{game.filecryptInfo?.filesize}</code>
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-red-500 font-medium">
+                            Link not available right now
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Still under construction
+                          </p>
+                        </>
+                      )}
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </Button>
           );
         })
       ) : (
@@ -434,6 +427,7 @@ export const GameDetail = ({ game }: { game: Game }) => {
     )}
   </div>
 </TabsContent>
+
 
 
               <TabsContent value="requirements">

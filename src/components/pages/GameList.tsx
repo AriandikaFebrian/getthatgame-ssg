@@ -59,7 +59,7 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
   };
 
   const handleMinRatingsChange = (val: number | null) => {
-  setPage(0); // Reset ke halaman pertama saat filter berubah
+  setPage(0);
   setMinRatings(val);
 };
 
@@ -67,14 +67,12 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
   const filteredAndSortedGames = useMemo(() => {
     let filtered = games;
 
-    // Filter genre
     if (selectedGenres.length > 0) {
       filtered = filtered.filter((game) =>
         selectedGenres.every((genre) => game.genres.includes(genre))
       );
     }
 
-    // Filter rating
     if (minRatings !== null) {
   const selectedRange = ratingOptions.find((r) => r.min === minRatings);
   if (selectedRange) {

@@ -3,7 +3,6 @@ import { Metadata } from "next";
 import { games } from "@/data/games";
 import { GameDetail } from "@/components/organisms/GameDetail";
 
-// ✅ Tetap boleh untuk komponen utama
 interface GamePageProps {
   params: {
     slug: string;
@@ -16,7 +15,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Ubah ini → Jangan pakai GamePageProps
 export async function generateMetadata({
   params,
 }: {

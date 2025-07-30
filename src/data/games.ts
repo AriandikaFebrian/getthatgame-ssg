@@ -22,13 +22,82 @@ Packed with detailed mechanics, real-world systems, and long-term goals, Big Amb
     "/Images/Big-Ambitions/Big-Ambitions-pc.png",
     "/Images/Big-Ambitions/big-ambitions-parking-80f37.webp",
   ],
- downloadLinks: [
-  { label: "Mega", url: "" },
-  { label: "Google Drive", url: "" },
-  { label: "MediaFire", url: "" },
-  { label: "1Fichier", url: "" },
-  { label: "Pixeldrain", url: "" },
-],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1",
+        url: "https://mega.nz/file/part1",
+        size: "2 GB",
+        host: "Mega"
+      },
+      {
+        name: "Part 2",
+        url: "https://mega.nz/file/part2",
+        size: "1.8 GB",
+        host: "Mega"
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1",
+        url: "https://drive.google.com/file1",
+        size: "2 GB",
+        host: "Google Drive"
+      },
+      {
+        name: "Part 2",
+        url: "https://drive.google.com/file2",
+        size: "1.8 GB",
+        host: "Google Drive"
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File",
+        url: "https://mediafire.com/file",
+        size: "3.8 GB",
+        host: "MediaFire"
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [
+      {
+        name: "Single File",
+        url: "https://1fichier.com/file",
+        size: "3.8 GB",
+        host: "1Fichier"
+      }
+    ]
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [
+      {
+        name: "Single File",
+        url: "https://pixeldrain.com/file",
+        size: "3.8 GB",
+        host: "Pixeldrain"
+      }
+    ]
+  }
+]
+,
+
   systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
 - Processor: Intel i5-6400 or equivalent
@@ -85,13 +154,81 @@ This heartwarming title offers relaxing gameplay, seasonal variety, and plenty o
     "/Images/SOS-FoMT/screenshot2.jpg",
     "/Images/SOS-FoMT/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "https://mega.nz/file/VQ4XDAyb#qAXLIGqheOYyOByzyb2mFr485hdefHN_MlLY2xHwthE" },
-    { label: "Google Drive", url: "https://drive.google.com/file/d/1GNrG3noNG3qbwuzCm5ao-bFZjfKRIp8_/view?usp=sharing" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1",
+        url: "https://mega.nz/file/part1",
+        size: "2 GB",
+        host: "Mega"
+      },
+      {
+        name: "Part 2",
+        url: "https://mega.nz/file/part2",
+        size: "1.8 GB",
+        host: "Mega"
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1",
+        url: "https://drive.google.com/file1",
+        size: "2 GB",
+        host: "Google Drive"
+      },
+      {
+        name: "Part 2",
+        url: "https://drive.google.com/file2",
+        size: "1.8 GB",
+        host: "Google Drive"
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File",
+        url: "https://mediafire.com/file",
+        size: "3.8 GB",
+        host: "MediaFire"
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [
+      {
+        name: "Single File",
+        url: "https://1fichier.com/file",
+        size: "3.8 GB",
+        host: "1Fichier"
+      }
+    ]
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [
+      {
+        name: "Single File",
+        url: "https://pixeldrain.com/file",
+        size: "3.8 GB",
+        host: "Pixeldrain"
+      }
+    ]
+  }
+]
+,
   systemRequirements: `Minimum:
 - OS: Windows 8+
 - Processor: Intel Core i5-8265U
@@ -149,13 +286,69 @@ Manage employees, set marketing strategies, watch your character’s health, and
     "/Images/Schedule-I/screenshot-3.png"
   ],
 
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
 
   systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
@@ -213,13 +406,69 @@ Whether you're a longtime fan or discovering it for the first time, this collect
     "/Images/The-Sims-1/screenshot2.jpg",
     "/Images/The-Sims-1/screenshot3.jpg",
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows XP / Vista / 7 / 10 (with compatibility settings)
 - Processor: 1.0 GHz or better
@@ -273,13 +522,69 @@ This version is pre-installed, optimized, and compatible with modern systems, ma
     "/Images/The-Sims-2/screenshot2.jpg",
     "/Images/The-Sims-2/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows XP / Vista / 7 / 10 (use compatibility settings if needed)
 - Processor: 1.8 GHz or better
@@ -333,13 +638,69 @@ This version is optimized for modern PCs and includes all DLCs pre-installed. En
     "/Images/The-Sims-2-Ultimate/screenshot2.jpg",
     "/Images/The-Sims-2-Ultimate/screenshot3.png"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows XP / Vista / 7 / 10 (compatibility mode may be required)
 - Processor: 2.0 GHz or better
@@ -393,13 +754,69 @@ This pre-installed edition is optimized for modern PCs, with performance tweaks 
     "/Images/The-Sims-3-Ultimate/screenshot2.jpg",
     "/Images/The-Sims-3-Ultimate/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows XP / Vista / 7 / 10
 - Processor: 2.4 GHz P4 or equivalent
@@ -454,13 +871,69 @@ Experience the rise of Carl “CJ” Johnson as he returns to Los Santos to save
     "/Images/GTA-SA-DE/screenshot2.jpg",
     "/Images/GTA-SA-DE/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
 - Processor: Intel Core i5-6600K / AMD FX-6300
@@ -514,13 +987,69 @@ Step into the criminal underworld as Claude and carve your path through gang war
     "/Images/GTA-III-DE/screenshot2.jpg",
     "/Images/GTA-III-DE/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
 - Processor: Intel Core i5-6600K / AMD FX-6300
@@ -574,13 +1103,69 @@ Relive the vibrant era of big hair, pastel suits, and synthwave music while expl
     "/Images/GTA-ViceCity-DE/screenshot2.jpg",
     "/Images/GTA-ViceCity-DE/screenshot3.jpg"
   ],
-  downloadLinks: [
-    { label: "Mega", url: "" },
-    { label: "Google Drive", url: "" },
-    { label: "MediaFire", url: "" },
-    { label: "1Fichier", url: "" },
-    { label: "Pixeldrain", url: "" }
-  ],
+downloadLinks: [
+  {
+    label: "Mega",
+    host: "mega",
+    files: [
+      {
+        name: "Part 1", url: "https://mega.nz/file/part1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://mega.nz/file/part2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "Google Drive",
+    host: "google-drive",
+    files: [
+      {
+        name: "Part 1", url: "https://drive.google.com/file1",
+        size: "",
+        host: ""
+      },
+      {
+        name: "Part 2", url: "https://drive.google.com/file2",
+        size: "",
+        host: ""
+      },
+    ]
+  },
+  {
+    label: "MediaFire",
+    host: "mediafire",
+    files: [
+      {
+        name: "Single File", url: "https://mediafire.com/file",
+        size: "",
+        host: ""
+      }
+    ]
+  },
+  {
+    label: "1Fichier",
+    host: "1fichier",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  },
+  {
+    label: "Pixeldrain",
+    host: "pixeldrain",
+    files: [{
+      name: "Single File", url: "https://mediafire.com/file",
+      size: "",
+      host: ""
+    }],
+  }
+],
   systemRequirements: `Minimum:
 - OS: Windows 10 (64-bit)
 - Processor: Intel Core i5-6600K / AMD FX-6300

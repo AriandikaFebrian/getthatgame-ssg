@@ -36,31 +36,32 @@ export default function RootLayout({
     <html lang="en">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground transition-all duration-700 ease-in-out`}>
 
-        <Navbar />
+  <Navbar />
 
-        <main className="scroll-area px-4 sm:px-6 md:px-8">
-          {children}
-            <ReportBrokenLinkButton />
-<footer className="text-center text-sm text-muted-foreground py-6 border-t border-border">
-  <p>
-    © {new Date().getFullYear()}{" "}
-    <span className="font-semibold text-primary">GetThatGame</span>. All rights reserved.
-  </p>
-  <p className="mt-2">
-    Found a broken link?{" "}
-    <a
-      href="/reports"
-      className="text-blue-600 hover:underline dark:text-blue-400"
-    >
-      Report it here.
-    </a>
-  </p>
-</footer>
+  <main className="flex-1 px-4 sm:px-6 md:px-8">
+    {children}
+    <ReportBrokenLinkButton />
+  </main>
 
+  <footer className="text-center text-sm text-muted-foreground py-6 border-t border-border">
+    <p>
+      © {new Date().getFullYear()}{" "}
+      <span className="font-semibold text-primary">GetThatGame</span>. All rights reserved.
+    </p>
+    <p className="mt-2">
+      Found a broken link?{" "}
+      <a
+        href="/reports"
+        className="text-blue-600 hover:underline dark:text-blue-400"
+      >
+        Report it here.
+      </a>
+    </p>
+  </footer>
 
-        </main>
-        <Toaster richColors />
-      </body>
+  <Toaster richColors />
+</body>
+
     </html>
   );
 }

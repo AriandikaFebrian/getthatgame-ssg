@@ -13,11 +13,23 @@ export interface Game {
   screenshots: string[];
   systemRequirements?: string;
   installationNotes?: string;
-  downloadLinks: { label: string; url: string }[];
-   filecryptInfo?: {
+downloadLinks: {
+  label: string;
+  host: string;
+  files: {
+    host: string;
+    size: string;
+    name: string;
+    url: string;
+  }[];
+}[];
+
+  filecryptInfo?: {
     folderPassword?: string;
     rarPassword?: string;
     note?: string;
     filesize?: string;
   };
 }
+
+

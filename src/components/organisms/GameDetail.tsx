@@ -320,25 +320,41 @@ export const GameDetail = ({ game }: { game: Game }) => {
           const href = `/verify/${slug}/${host}`;
 
           return (
-            <Button
-              key={link.label}
-              onClick={() => {
-                if (!isAvailable) return;
+   <Button
+  key={link.label}
+  onClick={() => {
+    if (!isAvailable) return;
 
-                // Simpan ke sessionStorage terlebih dahulu
-                sessionStorage.setItem(key, "true");
+    // 🔑 Generate shortlink key dan href
+    const normalizeHost = (host: string) => host.toLowerCase().replace(/\s+/g, "-");
+    const getShortLinkKey = (slug: string, host: string) =>
+      `${slug.toLowerCase()}_${normalizeHost(host)}`;
 
-                // Tambahkan sedikit delay sebelum melakukan redirect
-                setTimeout(() => {
-  sessionStorage.setItem(key, "true");
-  router.push(href); // Lakukan redirect setelah sesi disimpan
-}, 500); // Delay 500ms untuk memastikan sessionStorage ter-set
-              }}
-              variant="ghost"
-              size="lg"
-              className="w-full justify-between text-black dark:text-white shadow cursor-pointer"
-              disabled={!isAvailable}
-            >
+    const key = getShortLinkKey(game.slug, link.host);
+
+    // Cek apakah shortlink tersedia di data shortLinks
+    const shortlink = shortLinks[key];
+
+    // Simpan ke sessionStorage sebelum navigasi
+    sessionStorage.setItem(key, "true");
+
+    if (shortlink) {
+      // Jika shortlink ada, arahkan ke shortlink
+      setTimeout(() => {
+        router.push(shortlink); // Gunakan router.push() untuk navigasi ke shortlink
+      }, 500); // Delay 500ms untuk memastikan sessionStorage ter-set
+    } else {
+      // Jika shortlink tidak ada, arahkan ke halaman verifikasi
+      setTimeout(() => {
+        router.push(`/verify/${game.slug}/${normalizeHost(link.host)}`); // Halaman verifikasi
+      }, 500); // Delay 500ms untuk memastikan sessionStorage ter-set
+    }
+  }}
+  variant="ghost"
+  size="lg"
+  className="w-full justify-between text-black dark:text-white shadow cursor-pointer"
+  disabled={!isAvailable}
+>
               <div className="flex items-center justify-between w-full">
                 {link.label}
                 <TooltipProvider>

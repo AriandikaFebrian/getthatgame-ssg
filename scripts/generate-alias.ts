@@ -1,20 +1,16 @@
 import fs from 'fs';
 import path from 'path';
-import { games } from '../src/data/games';
+import { tokens } from '../src/lib/tokens'; // Update ke path file tokens.ts
 
 type Row = [string, string];
 
 const rows: Row[] = [];
 
-for (const game of games) {
-  const gameSlug = game.slug;
-
-  for (const mirror of game.downloadLinks || []) {
-    const host = mirror.host.toLowerCase();
-    const alias = `unlock-${gameSlug}-${host}`;
-    const destination = `https://getthatgame-ssg.vercel.app/game/${gameSlug}/unlocked/${host}`;
-    rows.push([alias, destination]);
-  }
+for (const token in tokens) {
+  const { slug, host } = tokens[token];
+  const alias = `unlock-${slug}-${host}`;
+  const destination = `https://getthatgame.com/api/unlock?token=${token}`;
+  rows.push([alias, destination]);
 }
 
 // Cari panjang maksimal setiap kolom

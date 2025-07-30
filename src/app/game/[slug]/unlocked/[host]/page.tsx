@@ -1,16 +1,24 @@
 // /app/game/[slug]/unlocked/[host]/page.tsx
-import { notFound } from "next/navigation";
+import { cookies } from "next/headers"; // ✅ Pakai ini di server component
+import { redirect, notFound } from "next/navigation";
 import { games } from "@/data/games";
 import Link from "next/link";
 import { Game } from "../../../../../../types";
 
-export default function UnlockedHostPage({
+export default async function UnlockedHostPage({
   params,
 }: {
   params: { slug: string; host: string };
 }) {
-  const { slug, host } = params;
+  const cookieStore = cookies();
+  const token = (await cookieStore).get("unlock_token")?.value;
 
+  if (!token) {
+    console.log("⛔ Tidak ada token! Redirect ke /unauthorized");
+    redirect("/unauthorized");
+  }
+
+  const { slug, host } = params;
   const game: Game | undefined = games.find((g) => g.slug === slug);
   if (!game) return notFound();
 

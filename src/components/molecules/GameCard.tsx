@@ -6,6 +6,8 @@ import { Button } from "@/components/atoms/Button";
 import { Badge } from "@/components/atoms/Badge";
 import { GenreTag } from "@/components/atoms/GenreTag";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import Link from "next/link";
+import { Star } from "lucide-react";
 
 interface GameCardProps {
   slug: string;
@@ -22,11 +24,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   slug,
   title,
   coverImage,
-  platform,
   rating,
-  genres,
-  selectedGenre,
-  onGenreClick,
 }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -57,6 +55,14 @@ export const GameCard: React.FC<GameCardProps> = ({
     >
       {/* Cover Image with Overlay Title */}
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+
+<div className="absolute top-2 left-[-10px] bg-black/65 text-white text-[11px] font-bold px-3 py-0.5 rounded shadow-md rotate-[-12deg] z-20">
+
+  {rating.toFixed(1)}
+</div>
+
+
+
         <Image
           src={coverImage}
           alt={`${title} cover`}
@@ -77,36 +83,43 @@ export const GameCard: React.FC<GameCardProps> = ({
         </Tooltip>
       </div>
 
+      
+      
+
       {/* Main Content */}
-      <div className="flex flex-col flex-grow px-4 pt-4 pb-2 space-y-2">
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary">{platform}</Badge>
-          <Badge>{rating.toFixed(1)}</Badge>
-        </div>
-        {genres.map((genre) => (
-  <div
-    key={genre}
-    onClick={(e: React.MouseEvent) => {
-      e.stopPropagation();
-      onGenreClick?.(genre);
-    }}
+<div className="pt-3 px-3 flex flex-col items-end gap-1">
+  {loading ? (
+    <div className="flex items-center gap-2 text-sm">
+      <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
+      <span className="font-medium">Loading{dots}</span>
+    </div>
+  ) : (
+    <Button
+      variant="outline"
+      size="sm"
+      className="text-xs px-3 py-1 h-auto"
+      onClick={(e) => {
+        e.stopPropagation();
+        handleViewDetails();
+      }}
+    >
+      View More
+    </Button>
+  )}
+
+  <p className="text-[10px] text-muted-foreground mt-1 mb-2 text-right">
+  Found a broken link?{" "}
+  <Link
+    href="/reports"
+    onClick={(e) => e.stopPropagation()}
+    className="text-blue-600 hover:underline dark:text-blue-400"
   >
-    <GenreTag
-      genre={genre}
-      isSelected={selectedGenre === genre}
-    />
-  </div>
-))}
+    Report it
+  </Link>
+</p>
 
+</div>
 
-        {/* Optional: show loading indicator */}
-        {loading && (
-          <div className="flex items-center gap-2 pt-2">
-            <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
-            <span className="font-medium text-sm">Loading{dots}</span>
-          </div>
-        )}
-      </div>
     </div>
   );
 };

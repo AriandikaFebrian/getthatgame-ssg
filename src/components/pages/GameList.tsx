@@ -29,7 +29,7 @@ const [minRatings, setMinRatings] = useState<number | null>(null);
 const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
 
 
-  const gamesPerPage = 8;
+  const gamesPerPage = 12;
 
   const ratingOptions = [
     { label: "4.5 – 5.0", min: 4.5, max: 5.0 },
@@ -112,10 +112,6 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Game Grid */}
           <div className="flex-1">
-            {/* Filter Controls */}
-            <div className="flex flex-wrap gap-4 mb-6">
-              <SortByDropdown value={sortOrder} onChange={setSortOrder} />
-            </div>
 
             {/* Game Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -170,36 +166,45 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
             )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="lg:w-72 space-y-4">
-            <h2 className="text-xl font-semibold">New & Trending</h2>
-            <div className="space-y-4">
-              {latestGames.map((game) => (
-                <Link
-                  key={game.slug}
-                  href={`/game/${game.slug}`}
-                  className="flex gap-3 border rounded-md p-2 hover:shadow transition"
-                >
-                  <div className="relative w-16 h-16 flex-shrink-0 rounded overflow-hidden">
-                    <Image src={game.coverImage} alt={game.title} fill className="object-cover" />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <h3 className="font-medium text-sm line-clamp-2">{game.title}</h3>
-                    <span className="text-xs text-muted-foreground">{game.platform}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+          <aside className="lg:w-74 space-y-6">
+  {/* New & Trending (paling atas karena penting) */}
+  <div>
+    <h2 className="text-xl font-semibold mb-2">New & Trending</h2>
+    <div className="space-y-4">
+      {latestGames.map((game) => (
+        <Link
+          key={game.slug}
+          href={`/game/${game.slug}`}
+          className="flex gap-3 border rounded-md p-2 hover:shadow transition"
+        >
+          <div className="relative w-16 h-16 flex-shrink-0 rounded overflow-hidden">
+            <Image src={game.coverImage} alt={game.title} fill className="object-cover" />
+          </div>
+          <div className="flex flex-col justify-center">
+            <h3 className="font-medium text-sm line-clamp-2">{game.title}</h3>
+            <span className="text-xs text-muted-foreground">{game.publisher}</span>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
 
-         {/* Rating Filter – Responsive */}
-{/* Desktop Sidebar */}
-<div className="hidden md:block w-full">
-  <RatingFilterChips
-    value={minRatings}
-    onChange={handleMinRatingsChange}
-    data={ratingData}
-  />
-</div>
+  {/* Filter tools (di bawah karena sekunder) */}
+  <div className="flex flex-col md:flex-row md:items-end gap-4">
+    <div className="hidden md:block">
+      <h2 className="text-sm font-semibold text-muted-foreground mb-1">Filter by rating</h2>
+      <RatingFilterChips
+        value={minRatings}
+        onChange={handleMinRatingsChange}
+        data={ratingData}
+      />
+    </div>
+    <div>
+      <h2 className="text-sm font-semibold text-muted-foreground mb-1">Sort by</h2>
+      <SortByDropdown value={sortOrder} onChange={setSortOrder} />
+    </div>
+  </div>
+
 
 {/* Mobile Accordion */}
 <div className="block md:hidden mb-4">

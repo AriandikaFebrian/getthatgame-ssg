@@ -42,15 +42,17 @@ export const Navbar: React.FC = () => {
     <nav className="bg-white border-b shadow-sm z-50 relative dark:bg-background">
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 min-w-[56px]">
-          <Image
-            src="/Images/Logo/Logo-removebg-preview.png"
-            alt="GetThatGame logo"
-            width={56}
-            height={56}
-            className="rounded-sm"
-          />
-        </Link>
+        <Link href="/" className="flex items-center">
+  <div className="w-10 h-10 relative scale-110">
+    <Image
+      src="/Images/Logo/Logo-removebg-preview.png"
+      alt="GetThatGame logo"
+      fill
+      className="object-contain"
+    />
+  </div>
+</Link>
+
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center">
@@ -80,6 +82,7 @@ export const Navbar: React.FC = () => {
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </Button>
+          
         </div>
 
         {/* Mobile Menu Button */}
@@ -170,7 +173,9 @@ export const Navbar: React.FC = () => {
                     <Moon className="w-4 h-4 mr-2" /> Dark Mode
                   </>
                 )}
+                
               </Button>
+              
 
               <div className="flex justify-center items-center mt-6">
                 <Link href="/" className="flex items-center space-x-2 min-w-[56px]">

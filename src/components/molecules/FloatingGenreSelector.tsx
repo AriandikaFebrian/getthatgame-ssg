@@ -61,19 +61,20 @@ export const FloatingGenreSelector = ({
   <h3 className="text-lg font-semibold mb-4">Filter by Genre</h3>
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-64 overflow-y-auto">
 
-            {allGenres.map((genre) => (
-              <Badge
-                key={genre}
-                onClick={() => onToggleGenre(genre)}
-                className={`cursor-pointer px-3 py-1 border rounded-md transition ${
-                  selectedGenres.includes(genre)
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-foreground border-border hover:bg-accent"
-                }`}
-              >
-                {genre}
-              </Badge>
-            ))}
+            {[...allGenres].sort().map((genre) => (
+  <Badge
+    key={genre}
+    onClick={() => onToggleGenre(genre)}
+    className={`cursor-pointer px-3 py-1 border rounded-md transition ${
+      selectedGenres.includes(genre)
+        ? "bg-primary text-primary-foreground border-primary"
+        : "bg-background text-foreground border-border hover:bg-accent"
+    }`}
+  >
+    {genre}
+  </Badge>
+))}
+
           </div>
         </DialogContent>
       </Dialog>

@@ -21,29 +21,30 @@ export const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="w-full">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+   <form onSubmit={handleSearch} className="w-full max-w-xs">
+  <div className="relative">
+    <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
 
-        <Input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          disabled={isPending}
-          placeholder="Search games..."
-          className="w-full pl-10 pr-20 text-sm"
-        />
+    <Input
+      type="text"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      disabled={isPending}
+      placeholder="Search games..."
+      className="pl-8 pr-20 h-8 text-xs"
+    />
 
-        <Button
-          type="submit"
-          variant="ghost"
-          size="sm"
-          disabled={isPending || !query.trim()}
-          className="absolute right-1.5 top-1/2 -translate-y-1/2 h-auto px-2 py-1 text-xs"
-        >
-          {isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : "Search"}
-        </Button>
-      </div>
-    </form>
+    <Button
+      type="submit"
+      variant="ghost"
+      size="sm"
+      disabled={isPending || !query.trim()}
+      className="absolute right-1 top-1/2 -translate-y-1/2 h-auto px-2 py-1 text-xs"
+    >
+      {isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : "Search"}
+    </Button>
+  </div>
+</form>
+
   );
 };

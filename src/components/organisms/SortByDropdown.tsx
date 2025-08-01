@@ -16,32 +16,30 @@ interface SortByDropdownProps {
 
 export function SortByDropdown({ value, onChange }: SortByDropdownProps) {
   return (
-    <div className="space-y-1">
-      <p className="text-xs text-muted-foreground">Sort by rating</p>
-      <Select
-        value={value ?? "none"} // default to "none" when null
-        onValueChange={(val) =>
-          onChange(val === "none" ? null : (val as "asc" | "desc"))
-        }
-      >
-        <SelectTrigger className="w-[160px]">
-          <SelectValue placeholder="Sort by" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="none">
-            <Minus size={14} className="inline mr-1" />
-            No Sort
-          </SelectItem>
-          <SelectItem value="desc">
-            <ArrowDown size={14} className="inline mr-1" />
-            High to Low
-          </SelectItem>
-          <SelectItem value="asc">
-            <ArrowUp size={14} className="inline mr-1" />
-            Low to High
-          </SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
+    <Select
+      value={value ?? "none"}
+      onValueChange={(val) =>
+        onChange(val === "none" ? null : (val as "asc" | "desc"))
+      }
+    >
+      <SelectTrigger className="w-[140px] h-7 px-2 py-1 text-[11px]">
+        <SelectValue placeholder="Sort by" />
+      </SelectTrigger>
+
+      <SelectContent className="text-[11px]">
+        <SelectItem value="none" className="py-1">
+          <Minus size={10} className="inline mr-1" />
+          No Sort
+        </SelectItem>
+        <SelectItem value="desc" className="py-1">
+          <ArrowDown size={10} className="inline mr-1" />
+          High to Low
+        </SelectItem>
+        <SelectItem value="asc" className="py-1">
+          <ArrowUp size={10} className="inline mr-1" />
+          Low to High
+        </SelectItem>
+      </SelectContent>
+    </Select>
   );
 }

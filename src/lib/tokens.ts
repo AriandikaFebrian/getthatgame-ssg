@@ -1,8 +1,7 @@
-// lib/tokens.ts
-
 export const tokens: Record<string, { slug: string; host: string }> = {
-  'abc123': { slug: 's-o-s-f-o-m-t', host: 'mega' },
-  'def456': { slug: 'big-ambitions', host: 'mediafire' },
-    'ghi789': { slug: 'gta-s-a-d-e', host: 'mega' },
-  // Tambahkan token lain di sini
+  // wuchang-fallen-d-e
+  '1eaa0ef0': { slug: 'wuchang-fallen-d-e', host: '1fichier' },
+  '180c1bed': { slug: 'wuchang-fallen-d-e', host: 'google-drive' },
+  '5be68121': { slug: 'wuchang-fallen-d-e', host: 'gofile' },
+  '523e8fa7': { slug: 'wuchang-fallen-d-e', host: 'pixeldrain' },
 };

@@ -34,7 +34,7 @@
     "next-env.d.ts",
     "send-test.js",
     ".next/types/**/*.ts"
-  ],
+, "scripts/add-token.mts"  ],
   "exclude": [
     "node_modules"
   ]

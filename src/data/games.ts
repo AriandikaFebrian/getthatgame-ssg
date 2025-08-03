@@ -853,7 +853,7 @@ DRM-free (no Origin or launcher required)`,
   }
 },
 {
-  slug: "gta-san-andreas-definitive-edition",
+  slug: "gta-s-a-d-e",
   title: "Grand Theft Auto: San Andreas – The Definitive Edition",
   coverImage: "/Images/GTA-SA-DE/cover.jpg",
   bannerImage: "/Images/GTA-SA-DE/cover.jpg",

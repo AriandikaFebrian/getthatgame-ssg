@@ -19,6 +19,9 @@ export const GameDetail = ({ game }: { game: Game }) => {
   const latestGames = [...games].filter((g) => g.slug !== game.slug).slice(-4).reverse();
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const languages = game.languages ?? [];
+
+
   return (
     <>
       <Head>
@@ -61,16 +64,75 @@ export const GameDetail = ({ game }: { game: Game }) => {
               </div>
             </div>
 
-            <div className="relative w-full h-56 sm:h-64 rounded-xl overflow-hidden shadow-md">
-              <Image
-                src={game.bannerImage}
-                alt={`${game.title} banner`}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
+<div className="flex flex-col sm:flex-row gap-4">
+
+  {/* Cover Image */}
+<div className="relative w-150 rounded-xl overflow-hidden shadow-md" style={{ height: '16.75rem' }}>
+    <Image
+      src={game.bannerImage}
+      alt={`${game.title} banner`}
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
+
+  {/* Game Info / Badges */}
+  <div className="flex flex-col gap-2 sm:flex-1">
+
+    {/* Info Utama */}
+    <div className="flex flex-wrap gap-2 text-sm">
+      <Badge variant="outline" className="bg-transparent border-none text-foreground">Platform: {game.platform}</Badge>
+      <Badge variant="outline" className="bg-transparent border-none text-foreground">Developer: {game.developer}</Badge>
+      <Badge variant="outline" className="bg-transparent border-none text-foreground">Publisher: {game.publisher}</Badge>
+
+      {game.releaseDate && (
+        <Badge variant="outline" className="bg-transparent border-none text-foreground" >
+          Release: {new Date(game.releaseDate).toLocaleDateString()}
+        </Badge>
+      )}
+
+      {game.fileSize && (
+        <Badge variant="outline" className="bg-transparent border-none text-foreground">Size: {game.fileSize}</Badge>
+      )}
+
+      {game.splitInfo && (
+        <Badge variant="outline" className="bg-transparent border-none text-foreground">Split: {game.splitInfo}</Badge>
+      )}
+
+  {languages.length > 0 && (
+  <Badge variant="outline" className="bg-transparent border-none text-foreground">
+    Languages:
+      {languages.slice(0, 3).join(', ')}{languages.length > 3 ? ', ...' : ''}
+  </Badge>
+)}
+
+
+
+    </div>
+
+  </div>
+  
+</div>
+{/* Genre dan Tags */}
+    <div className="flex flex-wrap gap-2 text-sm mt-2">
+      {game.genres.map((genre) => (
+        <Badge key={genre}>{genre}</Badge>
+      ))}
+
+      {game.tags.map((tag) => (
+        <Badge key={tag} variant="outline">
+          #{tag}
+        </Badge>
+      ))}
+    </div>
+
+  
+</div>
+
+
+        
+          
 
           {/* Sidebar */}
           <aside className="lg:w-100 space-y-4">
@@ -112,20 +174,7 @@ export const GameDetail = ({ game }: { game: Game }) => {
           </aside>
         </section>
 
-        {/* Badges */}
-        <div className="flex flex-wrap gap-2 text-sm">
-          <Badge variant="secondary">Platform: {game.platform}</Badge>
-          <Badge variant="secondary">Developer: {game.developer}</Badge>
-          <Badge variant="secondary">Publisher: {game.publisher}</Badge>
-          {game.genres.map((genre) => (
-            <Badge key={genre}>{genre}</Badge>
-          ))}
-          {game.tags.map((tag) => (
-            <Badge key={tag} variant="outline">
-              #{tag}
-            </Badge>
-          ))}
-        </div>
+        
 
         {/* Screenshots */}
         <section>
@@ -192,10 +241,6 @@ export const GameDetail = ({ game }: { game: Game }) => {
                                     </span>
                                   </TooltipTrigger>
                                   <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
-                                    <p className="flex items-center gap-2">
-                                      <Folder className="w-4 h-4 text-yellow-500" />
-                                      <span><code>{game.filecryptInfo?.folderPassword}</code></span>
-                                    </p>
                                     <p className="flex items-center gap-2">
                                       <FileArchive className="w-4 h-4 text-yellow-500" />
                                       <span><code>{game.filecryptInfo?.rarPassword}</code></span>
@@ -320,10 +365,6 @@ export const GameDetail = ({ game }: { game: Game }) => {
                         </TooltipTrigger>
                         <TooltipContent className="bg-white text-black dark:bg-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 text-xs rounded-md px-3 py-2 shadow w-56">
                           <p className="flex items-center gap-2">
-                            <Folder className="w-4 h-4 text-yellow-500" />
-                            <span><code>{game.filecryptInfo?.folderPassword}</code></span>
-                          </p>
-                          <p className="flex items-center gap-2">
                             <FileArchive className="w-4 h-4 text-yellow-500" />
                             <span><code>{game.filecryptInfo?.rarPassword}</code></span>
                           </p>
@@ -365,10 +406,6 @@ export const GameDetail = ({ game }: { game: Game }) => {
                   <div className="rounded-md bg-zinc-100 dark:bg-zinc-900 border border-yellow-300 dark:border-yellow-500 p-4 text-sm text-zinc-800 dark:text-zinc-100">
                     <p className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">INFO</p>
                     <p className="mb-1">{game.filecryptInfo.note}</p>
-                    <p className="flex items-center gap-2">
-                      <Folder className="w-4 h-4 text-yellow-500" />
-                      <span>Folder Password: <code>{game.filecryptInfo.folderPassword}</code></span>
-                    </p>
                     <p className="flex items-center gap-2">
                       <FileArchive className="w-4 h-4 text-yellow-500" />
                       <span>RAR Password: <code>{game.filecryptInfo.rarPassword}</code></span>

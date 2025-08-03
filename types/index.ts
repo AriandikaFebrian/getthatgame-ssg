@@ -5,24 +5,32 @@ export interface Game {
   bannerImage: string;
   platform: string;
   rating: number;
-  description: string;
+  releaseDate: string; 
   developer: string;
   publisher: string;
+
+  description: string;
   genres: string[];
   tags: string[];
+  languages?: string[];
   screenshots: string[];
+
   systemRequirements?: string;
   installationNotes?: string;
-downloadLinks: {
-  label: string;
-  host: string;
-  files: {
+
+  fileSize?: string;
+  splitInfo?: string;
+
+  downloadLinks: {
+    label: string;
     host: string;
-    size: string;
-    name: string;
-    url: string;
+    files: {
+      name: string;
+      url: string;
+      size: string;
+      host: string;
+    }[];
   }[];
-}[];
 
   filecryptInfo?: {
     folderPassword?: string;
@@ -30,6 +38,6 @@ downloadLinks: {
     note?: string;
     filesize?: string;
   };
+
+  mirrors?: string[]; // 🆕 Tambahan: daftar mirror seperti Buzzheavier, Torrent, dll
 }
-
-

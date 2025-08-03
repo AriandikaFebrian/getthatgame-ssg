@@ -54,7 +54,7 @@ export const GameCard: React.FC<GameCardProps> = ({
       }`}
     >
       {/* Cover Image with Overlay Title */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+      <div className="relative w-full aspect-[16/9] overflow-hidden ">
 
 <div className="absolute top-2 left-[-10px] bg-black/65 text-white text-[11px] font-bold px-3 py-0.5 rounded shadow-md rotate-[-12deg] z-20">
 
@@ -62,14 +62,15 @@ export const GameCard: React.FC<GameCardProps> = ({
 </div>
 
 
-
-        <Image
-          src={coverImage}
-          alt={`${title} cover`}
-          fill
-          className="object-cover"
-          priority
-        />
+<div className="relative w-full aspect-[21/8.2]  overflow-hidden">
+  <Image
+    src={coverImage}
+    alt={`${title} cover`}
+    fill
+    className="object-cover"
+    priority
+  />
+</div>
 
         <Tooltip>
           <TooltipTrigger asChild>

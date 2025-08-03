@@ -9,7 +9,7 @@ const rows: Row[] = [];
 for (const token in tokens) {
   const { slug, host } = tokens[token];
   const alias = `unlock-${slug}-${host}`;
-  const destination = `https://getthatgame.com/api/unlock?token=${token}`;
+  const destination = `https://getthatgame-ssg.vercel.app/api/unlock?token=${token}`;
   rows.push([alias, destination]);
 }
 

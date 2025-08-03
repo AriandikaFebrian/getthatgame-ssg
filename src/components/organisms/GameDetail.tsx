@@ -303,7 +303,7 @@ export const GameDetail = ({ game }: { game: Game }) => {
 >
   {isAvailable ? (
        <a
-  href={`https://shrinkme.io/unlock-${game.slug}-${link.host.toLowerCase()}`} // ← pakai alias ShrinkMe
+   href={`/api/go/unlock-${game.slug}-${link.host.toLowerCase()}`}// ← pakai alias ShrinkMe
   target="_blank"
   rel="noopener noreferrer"
   className="flex items-center justify-between w-full"

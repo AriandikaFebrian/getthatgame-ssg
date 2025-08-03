@@ -3,9 +3,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { shortlinks } from '@/lib/shortlinks';
 
-const PRIORITY: ('shrinkme' | 'healthside' | 'linkvertise')[] = [
+const PRIORITY: ('shrinkme' | 'linkvertise')[] = [
   'shrinkme',
-  'healthside',
   'linkvertise',
 ];
 

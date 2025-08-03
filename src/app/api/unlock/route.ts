@@ -1,4 +1,3 @@
-// /app/api/unlock/route.ts atau /app/api/unlock/[token]/route.ts
 import { tokens } from '@/lib/tokens';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,19 +9,23 @@ export async function GET(req: NextRequest) {
     return new NextResponse('Invalid token', { status: 400 });
   }
 
-  const data = tokens[token]; // 🔐 Validasi token
-  if (!data) {
+  const tokenData = tokens[token];
+  if (!tokenData) {
     return new NextResponse('Token not found', { status: 404 });
   }
 
-  const { slug, host } = data;
+  const { slug, host } = tokenData;
+
   const redirectUrl = `https://getthatgame-ssg.vercel.app/game/${slug}/unlocked/${host}`;
 
+  // ✅ Set cookie tapi dengan nama unik berdasarkan slug dan host
+  const cookieName = `unlock_${slug}_${host}`;
   const response = NextResponse.redirect(redirectUrl, 302);
-  response.cookies.set('unlock_token', token, {
-    path: '/',
+
+  response.cookies.set(cookieName, token, {
+    path: `/game/${slug}/unlocked/${host}`,
     maxAge: 60 * 10, // 10 menit
-    httpOnly: false, // ✅ Kalau perlu dibaca di client, tetap false
+    httpOnly: false, // masih bisa dibaca client
   });
 
   return response;

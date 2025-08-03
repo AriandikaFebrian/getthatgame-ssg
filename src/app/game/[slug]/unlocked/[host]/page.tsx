@@ -1,8 +1,8 @@
-// /app/game/[slug]/unlocked/[host]/page.tsx
-import { cookies } from "next/headers"; // ✅ Pakai ini di server component
+import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { games } from "@/data/games";
 import Link from "next/link";
+import { tokens } from "@/lib/tokens"; // ✅ Perlu untuk validasi token
 import { Game } from "../../../../../../types";
 
 export default async function UnlockedHostPage({
@@ -10,15 +10,28 @@ export default async function UnlockedHostPage({
 }: {
   params: { slug: string; host: string };
 }) {
+  const { slug, host } = params;
   const cookieStore = cookies();
-  const token = (await cookieStore).get("unlock_token")?.value;
+  const cookieName = `unlock_${slug}_${host}`;
+  const token = (await cookieStore).get(cookieName)?.value;
 
+  // ⛔ Tidak ada token
   if (!token) {
     console.log("⛔ Tidak ada token! Redirect ke /unauthorized");
     redirect("/unauthorized");
   }
 
-  const { slug, host } = params;
+  // 🔒 Validasi token cocok dengan slug & host
+  const tokenData = tokens[token];
+  if (
+    !tokenData ||
+    tokenData.slug !== slug ||
+    tokenData.host.toLowerCase() !== host.toLowerCase()
+  ) {
+    console.log("🔐 Token tidak valid atau mismatch");
+    redirect("/unauthorized");
+  }
+
   const game: Game | undefined = games.find((g) => g.slug === slug);
   if (!game) return notFound();
 
@@ -57,7 +70,9 @@ export default async function UnlockedHostPage({
 
       {game.filecryptInfo && (
         <div className="mt-8 border border-yellow-300 dark:border-yellow-500 p-4 rounded bg-yellow-50 dark:bg-yellow-900 text-sm">
-          <p className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">Password & Info</p>
+          <p className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">
+            Password & Info
+          </p>
           <ul className="space-y-1">
             <li>
               🔐 <strong>Folder Password:</strong>{" "}

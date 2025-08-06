@@ -10,7 +10,8 @@ export default function HowToInstallPage() {
         How to Install the Game
       </h1>
 
-      <section className="grid md:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
         {/* Extract All Method */}
         <Card>
           <CardHeader>
@@ -48,6 +49,28 @@ export default function HowToInstallPage() {
                 className="w-full h-full rounded"
                 src="https://www.youtube.com/embed/ID_VIDEO_SEXTRACK"
                 title="Install Guide - Manual Extract"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Repack or Single EXE Installer Method */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">💽 Repack / Single EXE Installer</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm text-muted-foreground">
+            <p>
+              Some games come as a <strong>single .rar</strong> file. After extraction, you&apos;ll get a setup installer (e.g., from ElAmigos, FitGirl, DODI, etc.).
+              Just extract, run the <code>setup.exe</code>, and follow the installation steps.
+            </p>
+            <div className="aspect-video rounded-md overflow-hidden">
+              <iframe
+                className="w-full h-full rounded"
+                src="https://www.youtube.com/embed/ID_VIDEO_REPACK_INSTALL"
+                title="Install Guide - Repack EXE"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>

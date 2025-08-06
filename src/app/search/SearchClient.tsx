@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { GameCard } from "@/components/molecules/GameCard";
-import { RatingFilterChips } from "@/components/organisms/RatingFilterChips";
-import { SortByDropdown } from "@/components/organisms/SortByDropdown";
 import { games } from "@/data/games";
 
 export default function SearchClient() {
@@ -14,16 +12,6 @@ export default function SearchClient() {
   const query = searchParams.get("q")?.toLowerCase() || "";
   const minRating = parseFloat(searchParams.get("rating") || "0");
   const sortOrder = searchParams.get("sort") === "asc" ? "asc" : "desc";
-
-  const handleRatingChange = (rating: number) => {
-    const url = `/search?q=${query}&rating=${rating}&sort=${sortOrder}`;
-    router.push(url);
-  };
-
-  const handleSortChange = (order: "asc" | "desc") => {
-    const url = `/search?q=${query}&rating=${minRating}&sort=${order}`;
-    router.push(url);
-  };
 
   const filtered = games.filter(
     (game) =>
@@ -58,19 +46,18 @@ export default function SearchClient() {
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-500 mt-20">
-          <div className="text-5xl mb-4">🔍</div>
-          <p className="text-lg font-medium mb-2">
-            No results found for &quot;
-            <span className="text-blue-600">{query}</span>&quot;
-          </p>
-          <p className="text-sm text-muted-foreground mb-6">
-            Try another keyword or check your spelling.
-          </p>
-          <Link href="/" className="text-sm text-blue-600 hover:underline">
-            ← Back to Home
-          </Link>
-        </div>
+         <div className="text-center mt-20 text-gray-500">
+      <h1 className="text-7xl font-extrabold text-blue-600 mb-2">404</h1>
+      <h2 className="text-xl font-semibold mb-4">
+        No results found for <span className="text-blue-600">&quot;{query}&quot;</span>
+      </h2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Try another keyword or check your spelling.
+      </p>
+      <Link href="/" className="text-sm text-blue-600 hover:underline">
+        ← Back to Home
+      </Link>
+    </div>
       )}
     </>
   );

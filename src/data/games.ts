@@ -25,7 +25,7 @@ With fast-paced melee combat, a hauntingly beautiful world, and deep historical 
       "/Images/Wuchang-Fallen/screenshot-3.jpg",
     ],
 
-    fileSize: "15.32 GB",
+    fileSize: "16.32 GB",
     splitInfo: "Split 4 parts 4.95 GB Compressed",
     mirrors: ["Buzzheavier", "Datanodes", "Google Drive", "Mediafire", "Pixeldrain", "Torrent"],
 
@@ -91,24 +91,22 @@ Recommended:
 - Graphics: NVIDIA RTX 2060 / AMD RX 6700 XT
 - Storage: SSD recommended (40 GB)`,
 
-    installationNotes: `1. Extract all parts using WinRAR  
-2. Open the extracted folder  
-3. Run 'Wuchang.exe' as Administrator  
-4. (Optional) Install additional runtimes from _Redist folder if needed  
-5. Enjoy the game!
-
-⚠ Note: Please support the developers by purchasing the original game if you like it.
+   installationNotes: `1. Download and extract all parts using WinRAR  
+2. Mount the .iso file using Windows Explorer or any virtual drive software  
+3. Run 'setup.exe' from the mounted drive  
+4. Follow the installation instructions  
+5. (Optional) Install additional runtimes from the '_Redist' folder if available  
+6. Enjoy the game!
 
 Included Languages:  
 English, Chinese, Russian, German, French, Spanish, Portuguese, Japanese, Korean, Polish, Turkish
 
 Release Info:  
 Version: Deluxe Edition  
-Crack: ElAmigos / FLT  
-No installation required, pre-installed`,
-
+Crack: ElAmigos  
+Format: Disc Image Installer (.iso with setup.exe inside)`,
     filecryptInfo: {
-      rarPassword: "GTG.com",
+      rarPassword: "GetThatGame.Net",
       note: "All download links are interchangeable",
       filesize: "3.9 GB"
     }

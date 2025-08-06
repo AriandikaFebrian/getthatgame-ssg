@@ -41,9 +41,15 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="bg-white border-b shadow-sm z-50 relative dark:bg-background">
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
+
+
+        {/* Desktop Navigation */}
+       <div className="hidden md:flex justify-between items-center w-full">
+  {/* Kiri: Logo + Nav Links */}
+  <div className="flex items-center space-x-8">
+            {/* Logo */}
         <Link href="/" className="flex items-center">
-  <div className="w-10 h-10 relative scale-110">
+  <div className="w-10 h-10 relative scale-180">
     <Image
       src="/Images/Logo/Logo-removebg-preview.png"
       alt="GetThatGame logo"
@@ -52,38 +58,34 @@ export const Navbar: React.FC = () => {
     />
   </div>
 </Link>
+    {navLinks.map((link) => (
+      <Link
+        key={link.name}
+        href={link.href}
+        className={`text-base font-medium ${
+          pathname === link.href
+            ? "text-blue-600 dark:text-blue-400"
+            : "text-gray-700 hover:text-blue-600 dark:text-foreground"
+        }`}
+      >
+        {link.name}
+      </Link>
+    ))}
+  </div>
 
+  {/* Kanan: Search + Dark Mode */}
+  <div className="flex items-center space-x-4">
+    <SearchBar />
+    <Button
+      variant="outline"
+      size="sm"
+      onClick={toggleDarkMode}
+    >
+      {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+    </Button>
+  </div>
+</div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 items-center">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-base font-medium ${
-                pathname === link.href
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-700 hover:text-blue-600 dark:text-foreground"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-
-          <div className="ml-4">
-            <SearchBar />
-          </div>
-
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleDarkMode}
-            className="ml-4"
-          >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </Button>
-          
-        </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -177,10 +179,10 @@ export const Navbar: React.FC = () => {
               </Button>
               
 
-              <div className="flex justify-center items-center mt-6">
+              <div className="flex justify-center items-center mt-">
                 <Link href="/" className="flex items-center space-x-2 min-w-[56px]">
                   <Image
-                    src="/Images/Logo/Logo-removebg-preview.png"
+                    src="/public/Images/Logo/Logo-removebg-preview.png"
                     alt="GetThatGame logo"
                     width={56}
                     height={56}

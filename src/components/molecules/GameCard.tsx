@@ -90,11 +90,19 @@ export const GameCard: React.FC<GameCardProps> = ({
       {/* Main Content */}
 <div className="pt-3 px-3 flex flex-col items-end gap-1">
   {loading ? (
-    <div className="flex items-center gap-2 text-sm">
-      <div className="w-4 h-4 border-2 border-t-2 border-primary rounded-full animate-spin" />
-      <span className="font-medium">Loading{dots}</span>
-    </div>
-  ) : (
+  <div className="flex items-center gap-2 text-sm">
+    <Image
+      src="/Images/Logo/Logo-removebg-preview.png"
+      alt="Loading Logo"
+      width={20}
+      height={20}
+      className="animate-spin"
+      priority
+    />
+    <span className="font-medium">Loading{dots}</span>
+  </div>
+) : (
+
     <Button
       variant="outline"
       size="sm"

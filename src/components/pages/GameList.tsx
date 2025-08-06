@@ -9,6 +9,7 @@ import { FloatingGenreSelector } from "@/components/molecules/FloatingGenreSelec
 import { Game } from "../../../types";
 import { RatingFilterChips } from "../organisms/RatingFilterChips";
 import { SortByDropdown } from "../organisms/SortByDropdown";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 
 interface GameListProps {
   games: Game[];
@@ -62,6 +63,31 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
   setPage(0);
   setMinRatings(val);
 };
+
+type PaginationItem = number | "...";
+ function getSmartPagination(currentPage: number, totalPages: number): PaginationItem[] {
+  const maxPagesToShow = 10;
+  const pages: PaginationItem[] = [];
+
+  const currentChunkStart = Math.floor((currentPage - 1) / maxPagesToShow) * maxPagesToShow + 1;
+  const currentChunkEnd = Math.min(currentChunkStart + maxPagesToShow - 1, totalPages);
+
+  if (currentChunkStart > 1) {
+    pages.push("...");
+  }
+
+  for (let i = currentChunkStart; i <= currentChunkEnd; i++) {
+    pages.push(i);
+  }
+
+  if (currentChunkEnd < totalPages) {
+    pages.push("...");
+  }
+
+  return pages;
+}
+
+
 
 
   const filteredAndSortedGames = useMemo(() => {
@@ -135,35 +161,64 @@ const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
                 </div>
               )}
             </div>
+{totalPages > 1 && (
+  <div className="flex justify-center items-center flex-wrap gap-1 pt-6">
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex justify-center items-center flex-wrap gap-2 pt-6">
-                <Button onClick={() => handlePageChange(page - 1)} disabled={page === 0} variant="outline" size="sm">
-                  Prev
-                </Button>
+    {/* First Page */}
+    <Button
+      onClick={() => handlePageChange(0)}
+      disabled={page === 0}
+      variant="ghost"
+    >
+      <ChevronsLeft className="w-4 h-4" />
+    </Button>
 
-                {[...Array(totalPages)].map((_, idx) => (
-                  <Button
-                    key={idx}
-                    onClick={() => handlePageChange(idx)}
-                    variant={idx === page ? "default" : "outline"}
-                    size="sm"
-                  >
-                    {idx + 1}
-                  </Button>
-                ))}
+    {/* Prev */}
+    <Button
+      onClick={() => handlePageChange(page - 1)}
+      disabled={page === 0}
+      variant="ghost"
+    >
+      <ChevronLeft className="w-4 h-4" />
+    </Button>
 
-                <Button
-                  onClick={() => handlePageChange(page + 1)}
-                  disabled={page === totalPages - 1}
-                  variant="outline"
-                  size="sm"
-                >
-                  Next
-                </Button>
-              </div>
-            )}
+    {/* Page Numbers */}
+    {getSmartPagination(page + 1, totalPages).map((item, idx) =>
+      item === "..." ? (
+        <span key={idx} className="px-2 text-muted-foreground">...</span>
+      ) : (
+        <Button
+          key={idx}
+          onClick={() => handlePageChange(Number(item) - 1)}
+          variant={Number(item) - 1 === page ? "default" : "ghost"}
+          className="w-8 h-8 text-sm"
+        >
+          {item}
+        </Button>
+      )
+    )}
+
+    {/* Next */}
+    <Button
+      onClick={() => handlePageChange(page + 1)}
+      disabled={page === totalPages - 1}
+      variant="ghost"
+    >
+      <ChevronRight className="w-4 h-4" />
+    </Button>
+
+    {/* Last Page */}
+    <Button
+      onClick={() => handlePageChange(totalPages - 1)}
+      disabled={page === totalPages - 1}
+      variant="ghost"
+    >
+      <ChevronsRight className="w-4 h-4" />
+    </Button>
+  </div>
+)}
+
+
           </div>
 
           <aside className="lg:w-74 space-y-6">
